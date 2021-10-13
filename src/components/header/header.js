@@ -1,8 +1,8 @@
 import React from "react";
-import Body from "../body/body";
+// import Body from "../body/body";
 import { Tabs, TabList, TabPanels, Tab, TabPanel } from "@chakra-ui/react";
-import AnalogTool from "../analogTool/analogToolMain";
-import Navigate from "../navigate";
+// import AnalogTool from "../analogTool/analogToolMain";
+// import Navigate from "../navigate";
 
 export default function Header() {
   return (

@@ -1,16 +1,16 @@
 import React, { useMemo, useState } from "react";
 import {
   MapContainer,
-  Marker,
-  Circle,
-  Popup,
+  // Marker,
+  // Circle,
+  // Popup,
   TileLayer,
   GeoJSON,
   Tooltip,
   Rectangle,
   useMap,
 } from "react-leaflet";
-import L from "leaflet";
+// import L from "leaflet";
 
 // const customMarker = new L.icon({
 //   iconUrl: "https://unpkg.com/leaflet@1.4.0/dist/images/marker-icon.png",
@@ -69,7 +69,7 @@ function SetBoundsRectangles() {
   );
 }
 export default function Analog() {
-  const position = [46.95037217, -117.33490945];
+  // const position = [46.95037217, -117.33490945];
   const whitmanCounty = {
     type: "FeatureCollection",
     features: [
@@ -98,7 +98,7 @@ export default function Analog() {
       },
     ],
   };
-  const limeOptions = { color: "lime" };
+  // const limeOptions = { color: "lime" };
   return (
     // <MapContainer bounds={outerBounds} scrollWheelZoom={false}>
     //   <TileLayer

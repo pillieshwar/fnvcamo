@@ -2,17 +2,17 @@ import { React } from "react";
 import Header from "./header/header";
 import {
   Flex,
-  Spacer,
+  // Spacer,
   useColorMode,
   useColorModeValue,
-  AspectRatio,
+  // AspectRatio,
 } from "@chakra-ui/react";
-import { Button, ButtonGroup } from "@chakra-ui/react";
+import { Button } from "@chakra-ui/react";
 import {
-  List,
+  // List,
   ListItem,
-  ListIcon,
-  OrderedList,
+  // ListIcon,
+  // OrderedList,
   UnorderedList,
 } from "@chakra-ui/react";
 import Maps from "./body/map";
@@ -21,7 +21,7 @@ export default function Navigate() {
   const { colorMode, toggleColorMode } = useColorMode();
 
   const changeToWhiteheader = useColorModeValue("#1A202C", "white");
-  const changeToWhite = useColorModeValue("#1A202C", "#CBD5E0");
+  // const changeToWhite = useColorModeValue("#1A202C", "#CBD5E0");
   const changeToBlack = useColorModeValue("#CBD5E0", "#1A202C");
   const whiteColor = useColorModeValue("#CBD5E0", "#1A202C");
   const blackColor = useColorModeValue("#1A202C", "#CBD5E0");

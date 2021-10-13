@@ -1,23 +1,23 @@
 import React, { useMemo, useState } from "react";
 import {
   MapContainer,
-  Marker,
-  Circle,
-  Popup,
+  // Marker,
+  // Circle,
+  // Popup,
   TileLayer,
   GeoJSON,
-  Tooltip,
+  // Tooltip,
   Rectangle,
   useMap,
 } from "react-leaflet";
-import L from "leaflet";
+// import L from "leaflet";
 import US_Counties from "./counties.json";
 
-const customMarker = new L.icon({
-  iconUrl: "https://unpkg.com/leaflet@1.4.0/dist/images/marker-icon.png",
-  iconSize: [25, 41],
-  iconAnchor: [13, 0],
-});
+// const customMarker = new L.icon({
+//   iconUrl: "https://unpkg.com/leaflet@1.4.0/dist/images/marker-icon.png",
+//   iconSize: [25, 41],
+//   iconAnchor: [13, 0],
+// });
 
 const innerBounds = [
   [49.505, -2.09],
@@ -75,7 +75,7 @@ export default function MainMap() {
   const counties = US_Counties;
   console.log(counties.type);
   //   L.geoJSON(whitmanCounty).addTo(map);
-  const limeOptions = { color: "lime" };
+  // const limeOptions = { color: "lime" };
 
   function whenClicked(name) {
     // e = event
