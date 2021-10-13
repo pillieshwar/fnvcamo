@@ -1,3 +1,13 @@
+.map {
+  height: 100%;
+  width: 100%;
+  /* margin: 2rem 1rem;
+  height: 80vh;
+  width: 55rem;
+  z-index: 0;
+  position: relative; */
+}
+
 .App {
   text-align: center;
 }
