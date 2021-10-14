@@ -15,6 +15,32 @@ import {
   // OrderedList,
   UnorderedList,
 } from "@chakra-ui/react";
+import { Grid, GridItem } from "@chakra-ui/react";
+import { Box } from "@chakra-ui/react";
+import { Badge } from "@chakra-ui/react";
+import { Text } from "@chakra-ui/react";
+import { Avatar } from "@chakra-ui/react";
+import { Center } from "@chakra-ui/react";
+import { Divider } from "@chakra-ui/react";
+import { Stack } from "@chakra-ui/react";
+import { Stat } from "@chakra-ui/react";
+import { StatLabel } from "@chakra-ui/react";
+import { StatNumber } from "@chakra-ui/react";
+import { StatHelpText } from "@chakra-ui/react";
+import { Select } from "@chakra-ui/react";
+import { RadioGroup } from "@chakra-ui/react";
+import { Radio } from "@chakra-ui/react";
+import { Heading } from "@chakra-ui/react";
+import {
+  Drawer,
+  DrawerBody,
+  DrawerFooter,
+  DrawerHeader,
+  DrawerOverlay,
+  DrawerContent,
+  DrawerCloseButton,
+} from "@chakra-ui/react";
+import { useDisclosure } from "@chakra-ui/react";
 import Maps from "./body/map";
 
 export default function Navigate() {
@@ -25,6 +51,8 @@ export default function Navigate() {
   const changeToBlack = useColorModeValue("#CBD5E0", "#1A202C");
   const whiteColor = useColorModeValue("#CBD5E0", "#1A202C");
   const blackColor = useColorModeValue("#1A202C", "#CBD5E0");
+
+  const { isOpen, onOpen, onClose } = useDisclosure();
 
   return (
     <Flex flexDir="column" h="100vh">
@@ -59,12 +87,49 @@ export default function Navigate() {
           {/* -----------------------filter -----------------------*/}
           <Flex
             w="100%"
-            p="1%"
+            // p="1%"
             flexDir="column"
             overflow="auto"
             minH="7vH"
             backgroundColor="white"
-          ></Flex>
+            color="black"
+          >
+            <Grid templateColumns="repeat(5, 1fr)" gap={2}>
+              <Box w="100%">
+                <Select size="md" p={0} placeholder="SELECT COUNTY">
+                  <option value="Walla Walla">Walla Walla</option>
+                  <option value="Fresno">Fresno</option>
+                  <option value="Canyon">Canyon</option>
+                </Select>
+              </Box>
+              <Box w="100%">
+                <RadioGroup defaultValue="1">
+                  <Stack>
+                    <Radio size="sm" value="1">
+                      MidCentury (2030 - 2070)
+                    </Radio>
+                    <Radio size="sm" value="2">
+                      EndCentury (2070 - 2099)
+                    </Radio>
+                  </Stack>
+                </RadioGroup>
+              </Box>
+              <Box w="100%">
+                <RadioGroup defaultValue="1">
+                  <Stack>
+                    <Radio size="sm" value="1">
+                      RCP 4.5
+                    </Radio>
+                    <Radio size="sm" value="2">
+                      RCP 8.5
+                    </Radio>
+                  </Stack>
+                </RadioGroup>
+              </Box>
+              <Box w="100%" />
+              <Box w="100%" />
+            </Grid>
+          </Flex>
           {/* -----------------------filter & map - gap-----------------------*/}
           <Flex
             w="100%"
@@ -117,7 +182,70 @@ export default function Navigate() {
             overflow="auto"
             minH="24vH"
             backgroundColor="white"
-          ></Flex>
+            color="black"
+          >
+            <Grid templateColumns="repeat(4, 1fr)" gap={3}>
+              <Box w="100%" h="10">
+                <Flex>
+                  <Avatar src="http://bit.ly/sae-adebayo" />
+                  <Box ml="3">
+                    <Text fontSize="sm">
+                      SELECTED COUNTY
+                      {/* <Badge ml="1" colorScheme="green">
+                        New
+                      </Badge> */}
+                    </Text>
+                    <Text fontWeight="bold" color="teal">
+                      Walla Walla
+                    </Text>
+                  </Box>
+                </Flex>
+                <Center height="50px">
+                  <Divider type="dashed" orientation="vertical" />
+                </Center>
+                <Flex>
+                  <Avatar src="http://bit.ly/sage-debayo" />
+                  <Box ml="3">
+                    <Text fontSize="sm">
+                      CLOSEST ANALOG
+                      {/* <Badge ml="1" colorScheme="green">
+                        New
+                      </Badge> */}
+                    </Text>
+                    <Text fontWeight="bold" color="teal">
+                      Fresno
+                    </Text>
+                  </Box>
+                </Flex>
+              </Box>
+
+              <Box w="100%" h="10">
+                <Stack direction="row" h="100px" p={4}>
+                  <Divider orientation="vertical" />
+                  <Text align="left">
+                    For higher emissions, Walla Walla's climate in 2080 will
+                    feel most like today's climate near Fresno, California.
+                  </Text>
+                </Stack>
+              </Box>
+              <Box w="100%" h="10">
+                <Stack direction="row" h="100px" p={4}>
+                  <Divider orientation="vertical" />
+                  <Text align="left">
+                    For higher emissions, Walla Walla's climate in 2080 will
+                    feel most like today's clinate near Fresno, California.
+                  </Text>
+                </Stack>
+              </Box>
+              <Box w="100%" h="10">
+                <Stat mt="7">
+                  <StatLabel>MAHALONOBIS</StatLabel>
+                  <StatNumber color="teal">100</StatNumber>
+                  <StatHelpText>DISTANCE</StatHelpText>
+                </Stat>
+              </Box>
+            </Grid>
+          </Flex>
         </Flex>
 
         {/* -----------------------vertical white gap -----------------------*/}
@@ -137,9 +265,45 @@ export default function Navigate() {
           backgroundColor="white"
         >
           <Flex w="100%" p="1%" flexDir="column" overflow="auto" minH="7vH">
-            <Button onClick={toggleColorMode}>
+            {/* <Button onClick={toggleColorMode}>
               Toggle {colorMode === "light" ? "Dark" : "Light"}
-            </Button>
+            </Button> */}
+            {/* <Button backgroundColor="white">
+              <Text fontSize="2xl">F&V CAMO</Text>
+            </Button> */}
+            <Box bg="teal" w="100%" p={2} fontSize="2xl" color="white">
+              F&V CAMO
+            </Box>
+            <Grid templateColumns="repeat(2, 1fr)" mt={1} gap={2}>
+              <Box w="100%" h="10">
+                <Button
+                  w="100%"
+                  colorScheme="teal"
+                  variant="outline"
+                  onClick={onOpen}
+                >
+                  VIEW CHARTS
+                </Button>
+                <Drawer placement="right" onClose={onClose} isOpen={isOpen}>
+                  <DrawerOverlay />
+                  <DrawerContent>
+                    <DrawerHeader borderBottomWidth="1px">
+                      Basic Drawer
+                    </DrawerHeader>
+                    <DrawerBody>
+                      <p>Some contents...</p>
+                      <p>Some contents...</p>
+                      <p>Some contents...</p>
+                    </DrawerBody>
+                  </DrawerContent>
+                </Drawer>
+              </Box>
+              <Box w="100%" h="10">
+                <Button w="100%" colorScheme="teal" variant="outline">
+                  RESULTS
+                </Button>
+              </Box>
+            </Grid>
             <UnorderedList p="5%" minH="7vH">
               <ListItem mt="2%">
                 Lorem ipsum dolor sit amet Consectetur adipiscing elit Integer

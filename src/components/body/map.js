@@ -89,11 +89,15 @@ export default function MainMap() {
       const { NAME } = feature.properties;
       const n = `${NAME}`;
       // console.log(n);
-      layer.on({
-        click: whenClicked(n),
-      });
+      // layer.on({
+      //   click: whenClicked(n),
+      // });
       layer.on("mouseover", function(e) {
         layer.bindPopup(`${NAME}`).openPopup();
+      });
+      layer.on("click", function(e) {
+        // layer.bindPopup(`${NAME}`).openPopup();
+        console.log(feature.properties.NAME);
       });
     }
   }
