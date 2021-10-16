@@ -1,3 +1,4 @@
+import { propNames } from "@chakra-ui/styled-system";
 import React, { useMemo, useState } from "react";
 import {
   MapContainer,
@@ -70,34 +71,21 @@ function SetBoundsRectangles() {
   );
 }
 
-export default function MainMap() {
+export default function MainMap(props) {
+  const [countyName, setCountyName] = React.useState("");
   const position = [39.742043, -104.991531];
   const counties = US_Counties;
-  console.log(counties.type);
-  //   L.geoJSON(whitmanCounty).addTo(map);
-  // const limeOptions = { color: "lime" };
-
-  function whenClicked(name) {
-    // e = event
-    console.log(name);
-    // You can make your ajax call declaration here
-    //$.ajax(...
-  }
 
   function onEachFeature(feature, layer) {
     if (feature.properties) {
       const { NAME } = feature.properties;
-      const n = `${NAME}`;
-      // console.log(n);
-      // layer.on({
-      //   click: whenClicked(n),
-      // });
+      // const n = `${NAME}`;
       layer.on("mouseover", function(e) {
         layer.bindPopup(`${NAME}`).openPopup();
       });
       layer.on("click", function(e) {
-        // layer.bindPopup(`${NAME}`).openPopup();
-        console.log(feature.properties.NAME);
+        setCountyName(feature.properties.NAME);
+        props.getcountyName(feature.properties.NAME);
       });
     }
   }
@@ -106,7 +94,7 @@ export default function MainMap() {
     <div id="map">
       <MapContainer
         bounds={outerBounds}
-        style={{ height: "100vh" }}
+        style={{ height: "60vh" }}
         center={position}
         zoom={5}
       >

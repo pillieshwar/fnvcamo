@@ -1,4 +1,4 @@
-import { React } from "react";
+import React, { useState } from "react";
 import Header from "./header/header";
 import {
   Flex,
@@ -41,11 +41,20 @@ import {
   DrawerCloseButton,
 } from "@chakra-ui/react";
 import { useDisclosure } from "@chakra-ui/react";
+import {
+  Modal,
+  ModalOverlay,
+  ModalContent,
+  ModalHeader,
+  ModalFooter,
+  ModalBody,
+  ModalCloseButton,
+} from "@chakra-ui/react";
 import Maps from "./body/map";
 
 export default function Navigate() {
   const { colorMode, toggleColorMode } = useColorMode();
-
+  // console.log(countyName);
   const changeToWhiteheader = useColorModeValue("#1A202C", "white");
   // const changeToWhite = useColorModeValue("#1A202C", "#CBD5E0");
   const changeToBlack = useColorModeValue("#CBD5E0", "#1A202C");
@@ -53,7 +62,13 @@ export default function Navigate() {
   const blackColor = useColorModeValue("#1A202C", "#CBD5E0");
 
   const { isOpen, onOpen, onClose } = useDisclosure();
+  const { isOpenD, onOpenD, onCloseD } = useDisclosure();
 
+  const [ctyName, setCtyName] = React.useState("Walla Walla");
+
+  function getCountyName(countyName) {
+    setCtyName(countyName);
+  }
   return (
     <Flex flexDir="column" h="100vh">
       {/* -----------------------header -----------------------*/}
@@ -96,7 +111,12 @@ export default function Navigate() {
           >
             <Grid templateColumns="repeat(5, 1fr)" gap={2}>
               <Box w="100%">
-                <Select size="md" p={0} placeholder="SELECT COUNTY">
+                <Select
+                  size="sm"
+                  // minHeight="111%"
+                  p={0}
+                  placeholder="SELECT COUNTY"
+                >
                   <option value="Walla Walla">Walla Walla</option>
                   <option value="Fresno">Fresno</option>
                   <option value="Canyon">Canyon</option>
@@ -108,7 +128,7 @@ export default function Navigate() {
                     <Radio size="sm" value="1">
                       MidCentury (2030 - 2070)
                     </Radio>
-                    <Radio size="sm" value="2">
+                    <Radio size="sm" marginTop="-3%" value="2">
                       EndCentury (2070 - 2099)
                     </Radio>
                   </Stack>
@@ -156,7 +176,7 @@ export default function Navigate() {
               ratio={22 / 9}
             > */}
             <div>
-              <Maps />
+              <Maps getcountyName={getCountyName} />
             </div>
             {/* <iframe
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3963.952912260219!2d3.375295414770757!3d6.5276316452784755!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x103b8b2ae68280c1%3A0xdc9e87a367c3d9cb!2sLagos!5e0!3m2!1sen!2sng!4v1567723392506!5m2!1sen!2sng"
@@ -180,7 +200,7 @@ export default function Navigate() {
             p="1%"
             flexDir="column"
             overflow="auto"
-            minH="24vH"
+            minH="21vH"
             backgroundColor="white"
             color="black"
           >
@@ -188,32 +208,38 @@ export default function Navigate() {
               <Box w="100%" h="10">
                 <Flex>
                   <Avatar src="http://bit.ly/sae-adebayo" />
-                  <Box ml="3">
-                    <Text fontSize="sm">
+                  <Box width="100%" align="center" ml="3">
+                    <Text color="gray" fontSize="smaller">
                       SELECTED COUNTY
                       {/* <Badge ml="1" colorScheme="green">
                         New
                       </Badge> */}
                     </Text>
-                    <Text fontWeight="bold" color="teal">
-                      Walla Walla
+                    <Text fontWeight="bold" fontSize="large" color="teal">
+                      {ctyName}
                     </Text>
                   </Box>
                 </Flex>
-                <Center height="50px">
-                  <Divider type="dashed" orientation="vertical" />
+                <Center height="30px">
+                  <Divider
+                    type="dashed"
+                    align="center"
+                    ml="14"
+                    mt="-2"
+                    orientation="vertical"
+                  />
                 </Center>
                 <Flex>
                   <Avatar src="http://bit.ly/sage-debayo" />
-                  <Box ml="3">
-                    <Text fontSize="sm">
+                  <Box width="100%" align="center" ml="3">
+                    <Text color="gray" fontSize="smaller">
                       CLOSEST ANALOG
                       {/* <Badge ml="1" colorScheme="green">
                         New
                       </Badge> */}
                     </Text>
-                    <Text fontWeight="bold" color="teal">
-                      Fresno
+                    <Text fontWeight="bold" fontSize="large" color="teal">
+                      Umatilla
                     </Text>
                   </Box>
                 </Flex>
@@ -238,7 +264,7 @@ export default function Navigate() {
                 </Stack>
               </Box>
               <Box w="100%" h="10">
-                <Stat mt="7">
+                <Stat mt="6">
                   <StatLabel>MAHALONOBIS</StatLabel>
                   <StatNumber color="teal">100</StatNumber>
                   <StatHelpText>DISTANCE</StatHelpText>
@@ -281,6 +307,7 @@ export default function Navigate() {
                   colorScheme="teal"
                   variant="outline"
                   onClick={onOpen}
+                  fontSize="sm"
                 >
                   VIEW CHARTS
                 </Button>
@@ -288,29 +315,140 @@ export default function Navigate() {
                   <DrawerOverlay />
                   <DrawerContent>
                     <DrawerHeader borderBottomWidth="1px">
-                      Basic Drawer
+                      We can display some charts here, If needed! Or else do it
+                      on a new page
                     </DrawerHeader>
                     <DrawerBody>
-                      <p>Some contents...</p>
-                      <p>Some contents...</p>
-                      <p>Some contents...</p>
+                      <p>
+                        Lorem ipsum dolor sit amet Consectetur adipiscing elit
+                        Integer molestie lorem at massa Facilisis in pretium
+                        nisl aliquet
+                      </p>
+                      <p>
+                        Lorem ipsum dolor sit amet Consectetur adipiscing elit
+                        Integer molestie lorem at massa Facilisis in pretium
+                        nisl aliquet
+                      </p>
+                      <p>
+                        Lorem ipsum dolor sit amet Consectetur adipiscing elit
+                        Integer molestie lorem at massa Facilisis in pretium
+                        nisl aliquet
+                      </p>
+                      <p>
+                        Lorem ipsum dolor sit amet Consectetur adipiscing elit
+                        Integer molestie lorem at massa Facilisis in pretium
+                        nisl aliquet
+                      </p>
+                      <p>
+                        Lorem ipsum dolor sit amet Consectetur adipiscing elit
+                        Integer molestie lorem at massa Facilisis in pretium
+                        nisl aliquet
+                      </p>
+                      <p>
+                        Lorem ipsum dolor sit amet Consectetur adipiscing elit
+                        Integer molestie lorem at massa Facilisis in pretium
+                        nisl aliquet
+                      </p>
                     </DrawerBody>
                   </DrawerContent>
                 </Drawer>
               </Box>
               <Box w="100%" h="10">
-                <Button w="100%" colorScheme="teal" variant="outline">
+                <Button
+                  w="100%"
+                  colorScheme="teal"
+                  variant="outline"
+                  fontSize="sm"
+                >
                   RESULTS
                 </Button>
+                {/* <Button onClick={onOpenD}>Open Modal</Button>
+
+                <Modal isOpen={isOpen} onClose={onClose}>
+                  <ModalOverlay />
+                  <ModalContent>
+                    <ModalHeader>Modal Title</ModalHeader>
+                    <ModalCloseButton />
+                    <ModalBody>
+                      <p>adfd</p>
+                    </ModalBody>
+
+                    <ModalFooter>
+                      <Button colorScheme="blue" mr={3} onClick={onClose}>
+                        Close
+                      </Button>
+                      <Button variant="ghost">Secondary Action</Button>
+                    </ModalFooter>
+                  </ModalContent>
+                </Modal> */}
               </Box>
             </Grid>
-            <UnorderedList p="5%" minH="7vH">
+            <Flex>
+              {/* <Avatar src="http://bit.ly/sae-adebayo" /> */}
+              <Box width="100%" mt="6" ml="3">
+                <Text align="center" color="gray" ml="-1" fontSize="sm">
+                  STATE
+                </Text>
+                <Text
+                  align="center"
+                  fontWeight="bold"
+                  fontSize="x-large"
+                  color="teal"
+                  mt="-2"
+                >
+                  WA
+                </Text>
+                <Divider />
+              </Box>
+            </Flex>
+
+            <Grid templateColumns="repeat(5, 1fr)" gap={4}>
+              <GridItem colSpan={2} h="10">
+                <Text
+                  align="right"
+                  fontWeight="bold"
+                  color="teal"
+                  mr="1"
+                  fontSize="large"
+                  mt="1"
+                >
+                  -112.43
+                </Text>
+                <Text align="right" fontSize="smaller" color="gray" mt="-2">
+                  LONGITUDE
+                </Text>
+              </GridItem>
+              <Divider mt="5" />
+              <GridItem colStart={4} colEnd={6} h="10">
+                <Text
+                  align="left"
+                  fontWeight="bold"
+                  color="teal"
+                  ml="-1"
+                  fontSize="large"
+                  mt="1"
+                >
+                  -112.43
+                </Text>
+                <Text
+                  align="left"
+                  fontSize="smaller"
+                  color="gray"
+                  mt="-2"
+                  ml="1"
+                >
+                  LATITUDE
+                </Text>
+              </GridItem>
+            </Grid>
+
+            <UnorderedList align="left" p="5%" minH="7vH">
               <ListItem mt="2%">
                 Lorem ipsum dolor sit amet Consectetur adipiscing elit Integer
                 molestie lorem at massa Facilisis in pretium nisl aliquet
               </ListItem>
 
-              <ListItem float="left" mt="2%">
+              <ListItem mt="2%">
                 Lorem ipsum dolor sit amet Consectetur adipiscing elit Integer
                 molestie lorem at massa Facilisis in pretium nisl aliquet
               </ListItem>
@@ -318,6 +456,18 @@ export default function Navigate() {
                 Lorem ipsum dolor sit amet Consectetur adipiscing elit Integer
                 molestie lorem at massa Facilisis in pretium nisl aliquet
               </ListItem>
+              <ListItem mt="2%">
+                Lorem ipsum dolor sit amet Consectetur adipiscing elit Integer
+                molestie lorem at massa Facilisis in pretium nisl aliquet
+              </ListItem>
+              {/* <ListItem mt="2%">
+                Lorem ipsum dolor sit amet Consectetur adipiscing elit Integer
+                molestie lorem at massa Facilisis in pretium nisl aliquet
+              </ListItem>
+              <ListItem mt="2%">
+                Lorem ipsum dolor sit amet Consectetur adipiscing elit Integer
+                molestie lorem at massa Facilisis in pretium nisl aliquet
+              </ListItem> */}
             </UnorderedList>
           </Flex>
         </Flex>
