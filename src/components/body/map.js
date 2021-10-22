@@ -10,6 +10,7 @@ import {
   // Tooltip,
   Rectangle,
   useMap,
+  Polyline,
 } from "react-leaflet";
 // import L from "leaflet";
 import US_Counties from "./counties.json";
@@ -73,8 +74,17 @@ function SetBoundsRectangles() {
 
 export default function MainMap(props) {
   const [countyName, setCountyName] = React.useState("");
+  const [analoglatlong, setAnaloglatlong] = React.useState([
+    4.245725,
+    -89.59798,
+  ]);
+  const [countylatlong, setCountylatlong] = React.useState([
+    4.245725,
+    -89.59798,
+  ]);
   const position = [39.742043, -104.991531];
   const counties = US_Counties;
+  const blueOptions = { color: "red" };
 
   function onEachFeature(feature, layer) {
     if (feature.properties) {
@@ -85,11 +95,14 @@ export default function MainMap(props) {
       });
       layer.on("click", function(e) {
         setCountyName(feature.properties.NAME);
+        // props.getcountyName(feature.properties.NAME);
         props.getcountyName(feature.properties.NAME);
+        setCountylatlong(feature.properties.LATLONG);
+        setAnaloglatlong(feature.properties.ANALOG);
       });
     }
   }
-
+  console.log(countylatlong);
   return (
     <div id="map">
       <MapContainer
@@ -108,6 +121,10 @@ export default function MainMap(props) {
           data={counties.features}
           onEachFeature={onEachFeature}
         ></GeoJSON>
+        <Polyline
+          pathOptions={blueOptions}
+          positions={[countylatlong, analoglatlong]}
+        />
       </MapContainer>
     </div>
   );

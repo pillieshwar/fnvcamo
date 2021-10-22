@@ -9,7 +9,9 @@
         "COUNTY": "097",
         "NAME": "Portage",
         "LSAD": "County",
-        "CENSUSAREA": 800.679
+        "CENSUSAREA": 800.679,
+        "LATLONG": [44.245725, -89.59798],
+        "ANALOG": [47.261712, -118.979519]
       },
       "geometry": {
         "type": "Polygon",
@@ -35,7 +37,9 @@
         "COUNTY": "067",
         "NAME": "Langlade",
         "LSAD": "County",
-        "CENSUSAREA": 870.64
+        "CENSUSAREA": 870.64,
+        "LATLONG": [45.028917, -88.98168],
+        "ANALOG": [44.245725, -89.59798]
       },
       "geometry": {
         "type": "Polygon",
@@ -68,7 +72,9 @@
         "COUNTY": "039",
         "NAME": "Fond du Lac",
         "LSAD": "County",
-        "CENSUSAREA": 719.553
+        "CENSUSAREA": 719.553,
+        "LATLONG": [43.893415, -88.46757],
+        "ANALOG": [44.245725, -89.59798]
       },
       "geometry": {
         "type": "Polygon",
@@ -98,7 +104,9 @@
         "COUNTY": "071",
         "NAME": "Walla Walla",
         "LSAD": "County",
-        "CENSUSAREA": 1270.129
+        "CENSUSAREA": 1270.129,
+        "LATLONG": [46.593606, -118.228928],
+        "ANALOG": [44.245725, -89.59798]
       },
       "geometry": {
         "type": "Polygon",
@@ -152,7 +160,9 @@
         "COUNTY": "057",
         "NAME": "Skagit",
         "LSAD": "County",
-        "CENSUSAREA": 1731.203
+        "CENSUSAREA": 1731.203,
+        "LATLONG": [48.588457, -122.649405],
+        "ANALOG": [44.245725, -89.59798]
       },
       "geometry": {
         "type": "MultiPolygon",
@@ -318,7 +328,9 @@
         "COUNTY": "025",
         "NAME": "Grant",
         "LSAD": "County",
-        "CENSUSAREA": 2679.513
+        "CENSUSAREA": 2679.513,
+        "LATLONG": [47.261712, -118.979519],
+        "ANALOG": [44.245725, -89.59798]
       },
       "geometry": {
         "type": "Polygon",
@@ -366,7 +378,9 @@
         "COUNTY": "005",
         "NAME": "Benton",
         "LSAD": "County",
-        "CENSUSAREA": 1700.379
+        "CENSUSAREA": 1700.379,
+        "LATLONG": [45.835962, -119.868135],
+        "ANALOG": [44.245725, -89.59798]
       },
       "geometry": {
         "type": "Polygon",
@@ -416,7 +430,9 @@
         "COUNTY": "215",
         "NAME": "Hidalgo",
         "LSAD": "County",
-        "CENSUSAREA": 1570.865
+        "CENSUSAREA": 1570.865,
+        "LATLONG": [26.348156, -97.861875],
+        "ANALOG": [44.245725, -89.59798]
       },
       "geometry": {
         "type": "Polygon",
@@ -460,7 +476,9 @@
         "COUNTY": "059",
         "NAME": "Umatilla",
         "LSAD": "County",
-        "CENSUSAREA": 3215.509
+        "CENSUSAREA": 3215.509,
+        "LATLONG": [46.000787, -117.996911],
+        "ANALOG": [44.245725, -89.59798]
       },
       "geometry": {
         "type": "Polygon",
@@ -535,7 +553,9 @@
         "COUNTY": "047",
         "NAME": "Marion",
         "LSAD": "County",
-        "CENSUSAREA": 1182.326
+        "CENSUSAREA": 1182.326,
+        "LATLONG": [44.885782, -121.734167],
+        "ANALOG": [44.245725, -89.59798]
       },
       "geometry": {
         "type": "Polygon",
@@ -588,7 +608,9 @@
         "COUNTY": "037",
         "NAME": "Genesee",
         "LSAD": "County",
-        "CENSUSAREA": 492.936
+        "CENSUSAREA": 492.936,
+        "LATLONG": [42.867461, -78.464381],
+        "ANALOG": [44.245725, -89.59798]
       },
       "geometry": {
         "type": "Polygon",
@@ -618,7 +640,9 @@
         "COUNTY": "049",
         "NAME": "Genesee",
         "LSAD": "County",
-        "CENSUSAREA": 636.977
+        "CENSUSAREA": 636.977,
+        "LATLONG": [42.88075, -83.927555],
+        "ANALOG": [44.245725, -89.59798]
       },
       "geometry": {
         "type": "Polygon",
@@ -648,7 +672,9 @@
         "COUNTY": "099",
         "NAME": "Walsh",
         "LSAD": "County",
-        "CENSUSAREA": 1281.931
+        "CENSUSAREA": 1281.931,
+        "LATLONG": [48.543773, -98.318098],
+        "ANALOG": [44.245725, -89.59798]
       },
       "geometry": {
         "type": "Polygon",
@@ -687,7 +713,9 @@
         "COUNTY": "047",
         "NAME": "Freeborn",
         "LSAD": "County",
-        "CENSUSAREA": 707.087
+        "CENSUSAREA": 707.087,
+        "LATLONG": [43.848139, -93.64829],
+        "ANALOG": [44.245725, -89.59798]
       },
       "geometry": {
         "type": "Polygon",
@@ -726,7 +754,9 @@
         "COUNTY": "037",
         "NAME": "Dakota",
         "LSAD": "County",
-        "CENSUSAREA": 562.168
+        "CENSUSAREA": 562.168,
+        "LATLONG": [44.745167, -92.802402],
+        "ANALOG": [44.245725, -89.59798]
       },
       "geometry": {
         "type": "Polygon",
@@ -775,7 +805,9 @@
         "COUNTY": "129",
         "NAME": "Renville",
         "LSAD": "County",
-        "CENSUSAREA": 982.906
+        "CENSUSAREA": 982.906,
+        "LATLONG": [44.45665, -94.78063],
+        "ANALOG": [44.245725, -89.59798]
       },
       "geometry": {
         "type": "Polygon",
@@ -807,7 +839,9 @@
         "COUNTY": "111",
         "NAME": "Otter Tail",
         "LSAD": "County",
-        "CENSUSAREA": 1972.068
+        "CENSUSAREA": 1972.068,
+        "LATLONG": [46.36888, -95.15557],
+        "ANALOG": [44.245725, -89.59798]
       },
       "geometry": {
         "type": "Polygon",
@@ -836,7 +870,9 @@
         "COUNTY": "117",
         "NAME": "Montcalm",
         "LSAD": "County",
-        "CENSUSAREA": 705.399
+        "CENSUSAREA": 705.399,
+        "LATLONG": [43.118793, -85.312513],
+        "ANALOG": [44.245725, -89.59798]
       },
       "geometry": {
         "type": "Polygon",
@@ -862,7 +898,9 @@
         "COUNTY": "003",
         "NAME": "Aroostook",
         "LSAD": "County",
-        "CENSUSAREA": 6671.33
+        "CENSUSAREA": 6671.33,
+        "LATLONG": [45.581204, -68.433001],
+        "ANALOG": [44.245725, -89.59798]
       },
       "geometry": {
         "type": "Polygon",
@@ -946,7 +984,9 @@
         "COUNTY": "067",
         "NAME": "Minidoka",
         "LSAD": "County",
-        "CENSUSAREA": 757.591
+        "CENSUSAREA": 757.591,
+        "LATLONG": [42.535275, -113.931799],
+        "ANALOG": [44.245725, -89.59798]
       },
       "geometry": {
         "type": "Polygon",
@@ -977,7 +1017,9 @@
         "COUNTY": "027",
         "NAME": "Canyon",
         "LSAD": "County",
-        "CENSUSAREA": 587.37
+        "CENSUSAREA": 587.37,
+        "LATLONG": [43.680865, -117.026623],
+        "ANALOG": [44.245725, -89.59798]
       },
       "geometry": {
         "type": "Polygon",
@@ -1017,7 +1059,9 @@
         "COUNTY": "011",
         "NAME": "Bingham",
         "LSAD": "County",
-        "CENSUSAREA": 2093.978
+        "CENSUSAREA": 2093.978,
+        "LATLONG": [43.623011, -112.697408],
+        "ANALOG": [44.245725, -89.59798]
       },
       "geometry": {
         "type": "Polygon",
@@ -1057,7 +1101,9 @@
         "COUNTY": "087",
         "NAME": "Decatur",
         "LSAD": "County",
-        "CENSUSAREA": 597.14
+        "CENSUSAREA": 597.14,
+        "LATLONG": [31.0784, -84.508078],
+        "ANALOG": [44.245725, -89.59798]
       },
       "geometry": {
         "type": "Polygon",
@@ -1087,7 +1133,9 @@
         "COUNTY": "051",
         "NAME": "Hendry",
         "LSAD": "County",
-        "CENSUSAREA": 1152.75
+        "CENSUSAREA": 1152.75,
+        "LATLONG": [26.259455, -80.879809],
+        "ANALOG": [44.245725, -89.59798]
       },
       "geometry": {
         "type": "Polygon",
@@ -1116,7 +1164,9 @@
         "COUNTY": "105",
         "NAME": "Polk",
         "LSAD": "County",
-        "CENSUSAREA": 1797.837
+        "CENSUSAREA": 1797.837,
+        "LATLONG": [28.361712, -81.818903],
+        "ANALOG": [44.245725, -89.59798]
       },
       "geometry": {
         "type": "Polygon",
@@ -1159,7 +1209,9 @@
         "COUNTY": "109",
         "NAME": "St. Johns",
         "LSAD": "County",
-        "CENSUSAREA": 600.655
+        "CENSUSAREA": 600.655,
+        "LATLONG": [30.130541, -81.601212],
+        "ANALOG": [44.245725, -89.59798]
       },
       "geometry": {
         "type": "Polygon",
@@ -1205,7 +1257,9 @@
         "COUNTY": "149",
         "NAME": "St. Joseph",
         "LSAD": "County",
-        "CENSUSAREA": 500.591
+        "CENSUSAREA": 500.591,
+        "LATLONG": [41.759085, -85.724534],
+        "ANALOG": [44.245725, -89.59798]
       },
       "geometry": {
         "type": "Polygon",
@@ -1251,7 +1305,9 @@
         "COUNTY": "105",
         "NAME": "Rio Grande",
         "LSAD": "County",
-        "CENSUSAREA": 911.958
+        "CENSUSAREA": 911.958,
+        "LATLONG": [37.404228, -106.710775],
+        "ANALOG": [44.245725, -89.59798]
       },
       "geometry": {
         "type": "Polygon",
@@ -1278,7 +1334,9 @@
         "COUNTY": "113",
         "NAME": "Yolo",
         "LSAD": "County",
-        "CENSUSAREA": 1014.689
+        "CENSUSAREA": 1014.689,
+        "LATLONG": [38.466563, -121.504139],
+        "ANALOG": [44.245725, -89.59798]
       },
       "geometry": {
         "type": "Polygon",
@@ -1330,7 +1388,9 @@
         "COUNTY": "053",
         "NAME": "Monterey",
         "LSAD": "County",
-        "CENSUSAREA": 3280.595
+        "CENSUSAREA": 3280.595,
+        "LATLONG": [35.789276, -120.213979],
+        "ANALOG": [44.245725, -89.59798]
       },
       "geometry": {
         "type": "Polygon",
@@ -1457,7 +1517,9 @@
         "COUNTY": "025",
         "NAME": "Imperial",
         "LSAD": "County",
-        "CENSUSAREA": 4176.603
+        "CENSUSAREA": 4176.603,
+        "LATLONG": [32.904115, -116.103137],
+        "ANALOG": [44.245725, -89.59798]
       },
       "geometry": {
         "type": "Polygon",
@@ -1517,7 +1579,9 @@
         "COUNTY": "019",
         "NAME": "Fresno",
         "LSAD": "County",
-        "CENSUSAREA": 5957.991
+        "CENSUSAREA": 5957.991,
+        "LATLONG": [36.488835, -119.573194],
+        "ANALOG": [44.245725, -89.59798]
       },
       "geometry": {
         "type": "Polygon",
@@ -1581,7 +1645,9 @@
         "COUNTY": "013",
         "NAME": "Maricopa",
         "LSAD": "County",
-        "CENSUSAREA": 9200.143
+        "CENSUSAREA": 9200.143,
+        "LATLONG": [33.465902, -111.580626],
+        "ANALOG": [44.245725, -89.59798]
       },
       "geometry": {
         "type": "Polygon",

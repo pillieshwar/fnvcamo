@@ -51,6 +51,8 @@ import {
   ModalCloseButton,
 } from "@chakra-ui/react";
 import Maps from "./body/map";
+import US_Counties from "./body/counties.json";
+import RightDrawer from "./drawer";
 
 export default function Navigate() {
   const { colorMode, toggleColorMode } = useColorMode();
@@ -61,12 +63,11 @@ export default function Navigate() {
   const whiteColor = useColorModeValue("#CBD5E0", "#1A202C");
   const blackColor = useColorModeValue("#1A202C", "#CBD5E0");
 
-  const { isOpen, onOpen, onClose } = useDisclosure();
-  const { isOpenD, onOpenD, onCloseD } = useDisclosure();
-
   const [ctyName, setCtyName] = React.useState("Walla Walla");
 
-  function getCountyName(countyName) {
+  const counties = US_Counties;
+
+  function getCountyName1(countyName) {
     setCtyName(countyName);
   }
   return (
@@ -105,15 +106,39 @@ export default function Navigate() {
             // p="1%"
             flexDir="column"
             overflow="auto"
-            minH="7vH"
+            minH="4vH"
             backgroundColor="white"
             color="black"
           >
-            <Grid templateColumns="repeat(5, 1fr)" gap={2}>
+            <Grid templateColumns="repeat(5, 1fr)" gap={0}>
+              <Box backgroundColor="teal" color="white" w="100%">
+                <Text fontSize="md" p="1">
+                  FILTER
+                </Text>
+              </Box>
+              <Box w="100%">
+                <Select textAlign="center" size="sm" p={0} placeholder="COUNTY">
+                  {counties.features.map((cnty) => {
+                    <option value="Walla Walla">{cnty.properties.NAME}</option>;
+                  })}
+                </Select>
+              </Box>
+              <Box w="100%">
+                <Select size="sm" p={0} placeholder="TIMEFRAME">
+                  <option value="Walla Walla">MidCentury (2030 - 2070)</option>
+                  <option value="Fresno">EndCentury (2070 - 2099)</option>
+                </Select>
+              </Box>
+              <Box w="100%">
+                <Select size="sm" p={0} placeholder="EMISSION SCENARIO">
+                  <option value="Walla Walla">RCP 4.5</option>
+                  <option value="Fresno">RCP 8.5</option>
+                </Select>{" "}
+              </Box>
               <Box w="100%">
                 <Select
+                  align="center"
                   size="sm"
-                  // minHeight="111%"
                   p={0}
                   placeholder="SELECT COUNTY"
                 >
@@ -122,32 +147,6 @@ export default function Navigate() {
                   <option value="Canyon">Canyon</option>
                 </Select>
               </Box>
-              <Box w="100%">
-                <RadioGroup defaultValue="1">
-                  <Stack>
-                    <Radio size="sm" value="1">
-                      MidCentury (2030 - 2070)
-                    </Radio>
-                    <Radio size="sm" marginTop="-3%" value="2">
-                      EndCentury (2070 - 2099)
-                    </Radio>
-                  </Stack>
-                </RadioGroup>
-              </Box>
-              <Box w="100%">
-                <RadioGroup defaultValue="1">
-                  <Stack>
-                    <Radio size="sm" value="1">
-                      RCP 4.5
-                    </Radio>
-                    <Radio size="sm" value="2">
-                      RCP 8.5
-                    </Radio>
-                  </Stack>
-                </RadioGroup>
-              </Box>
-              <Box w="100%" />
-              <Box w="100%" />
             </Grid>
           </Flex>
           {/* -----------------------filter & map - gap-----------------------*/}
@@ -176,7 +175,7 @@ export default function Navigate() {
               ratio={22 / 9}
             > */}
             <div>
-              <Maps getcountyName={getCountyName} />
+              <Maps getcountyName={getCountyName1} />
             </div>
             {/* <iframe
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3963.952912260219!2d3.375295414770757!3d6.5276316452784755!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x103b8b2ae68280c1%3A0xdc9e87a367c3d9cb!2sLagos!5e0!3m2!1sen!2sng!4v1567723392506!5m2!1sen!2sng"
@@ -302,56 +301,7 @@ export default function Navigate() {
             </Box>
             <Grid templateColumns="repeat(2, 1fr)" mt={1} gap={2}>
               <Box w="100%" h="10">
-                <Button
-                  w="100%"
-                  colorScheme="teal"
-                  variant="outline"
-                  onClick={onOpen}
-                  fontSize="sm"
-                >
-                  VIEW CHARTS
-                </Button>
-                <Drawer placement="right" onClose={onClose} isOpen={isOpen}>
-                  <DrawerOverlay />
-                  <DrawerContent>
-                    <DrawerHeader borderBottomWidth="1px">
-                      We can display some charts here, If needed! Or else do it
-                      on a new page
-                    </DrawerHeader>
-                    <DrawerBody>
-                      <p>
-                        Lorem ipsum dolor sit amet Consectetur adipiscing elit
-                        Integer molestie lorem at massa Facilisis in pretium
-                        nisl aliquet
-                      </p>
-                      <p>
-                        Lorem ipsum dolor sit amet Consectetur adipiscing elit
-                        Integer molestie lorem at massa Facilisis in pretium
-                        nisl aliquet
-                      </p>
-                      <p>
-                        Lorem ipsum dolor sit amet Consectetur adipiscing elit
-                        Integer molestie lorem at massa Facilisis in pretium
-                        nisl aliquet
-                      </p>
-                      <p>
-                        Lorem ipsum dolor sit amet Consectetur adipiscing elit
-                        Integer molestie lorem at massa Facilisis in pretium
-                        nisl aliquet
-                      </p>
-                      <p>
-                        Lorem ipsum dolor sit amet Consectetur adipiscing elit
-                        Integer molestie lorem at massa Facilisis in pretium
-                        nisl aliquet
-                      </p>
-                      <p>
-                        Lorem ipsum dolor sit amet Consectetur adipiscing elit
-                        Integer molestie lorem at massa Facilisis in pretium
-                        nisl aliquet
-                      </p>
-                    </DrawerBody>
-                  </DrawerContent>
-                </Drawer>
+                <RightDrawer />
               </Box>
               <Box w="100%" h="10">
                 <Button
