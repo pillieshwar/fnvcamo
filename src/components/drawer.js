@@ -85,13 +85,13 @@ export default function RightDrawer() {
                       x: [1, 2, 3],
                       y: [2, 6, 3],
                       type: "scatter",
-                      mode: "lines+markers",
+                      mode: "markers",
                       marker: { color: "red" },
                     },
                     {
-                      type: "bar",
+                      type: "histogram2dcontour",
                       marker: { color: "teal" },
-                      x: [1, 2, 3],
+                      x: [10, 20, 30],
                       y: [2, 5, 3],
                     },
                   ]}

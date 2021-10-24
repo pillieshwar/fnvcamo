@@ -5,13 +5,15 @@
       "type": "Feature",
       "properties": {
         "GEO_ID": "0500000US55097",
-        "STATE": "55",
+        "STATEID": "55",
+        "STATE": "WI",
         "COUNTY": "097",
-        "NAME": "Portage",
+        "NAME": "PORTAGE",
         "LSAD": "County",
         "CENSUSAREA": 800.679,
         "LATLONG": [44.245725, -89.59798],
-        "ANALOG": [47.261712, -118.979519]
+        "ANALOG": [43.893415, -88.46757],
+        "CLOSESTANALOG": "FOND DU LAC"
       },
       "geometry": {
         "type": "Polygon",
@@ -33,13 +35,15 @@
       "type": "Feature",
       "properties": {
         "GEO_ID": "0500000US55067",
-        "STATE": "55",
+        "STATEID": "55",
+        "STATE": "WI",
         "COUNTY": "067",
-        "NAME": "Langlade",
+        "NAME": "LANGLADE",
         "LSAD": "County",
         "CENSUSAREA": 870.64,
         "LATLONG": [45.028917, -88.98168],
-        "ANALOG": [44.245725, -89.59798]
+        "ANALOG": [44.245725, -89.59798],
+        "CLOSESTANALOG": "PORTAGE"
       },
       "geometry": {
         "type": "Polygon",
@@ -68,13 +72,15 @@
       "type": "Feature",
       "properties": {
         "GEO_ID": "0500000US55039",
-        "STATE": "55",
+        "STATEID": "55",
+        "STATE": "WI",
         "COUNTY": "039",
-        "NAME": "Fond du Lac",
+        "NAME": "FOND DU LAC",
         "LSAD": "County",
         "CENSUSAREA": 719.553,
         "LATLONG": [43.893415, -88.46757],
-        "ANALOG": [44.245725, -89.59798]
+        "ANALOG": [44.745167, -92.802402],
+        "CLOSESTANALOG": "DAKOTA"
       },
       "geometry": {
         "type": "Polygon",
@@ -100,13 +106,15 @@
       "type": "Feature",
       "properties": {
         "GEO_ID": "0500000US53071",
-        "STATE": "53",
+        "STATEID": "53",
+        "STATE": "WA",
         "COUNTY": "071",
-        "NAME": "Walla Walla",
+        "NAME": "WALLA WALLA",
         "LSAD": "County",
         "CENSUSAREA": 1270.129,
         "LATLONG": [46.593606, -118.228928],
-        "ANALOG": [44.245725, -89.59798]
+        "ANALOG": [46.000787, -117.996911],
+        "CLOSESTANALOG": "UMATILLA"
       },
       "geometry": {
         "type": "Polygon",
@@ -156,13 +164,15 @@
       "type": "Feature",
       "properties": {
         "GEO_ID": "0500000US53057",
-        "STATE": "53",
+        "STATEID": "53",
+        "STATE": "WA",
         "COUNTY": "057",
-        "NAME": "Skagit",
+        "NAME": "SKAGIT",
         "LSAD": "County",
         "CENSUSAREA": 1731.203,
         "LATLONG": [48.588457, -122.649405],
-        "ANALOG": [44.245725, -89.59798]
+        "ANALOG": [48.588457, -122.649405],
+        "CLOSESTANALOG": "SKAGIT"
       },
       "geometry": {
         "type": "MultiPolygon",
@@ -324,13 +334,15 @@
       "type": "Feature",
       "properties": {
         "GEO_ID": "0500000US53025",
-        "STATE": "53",
+        "STATEID": "53",
+        "STATE": "WA",
         "COUNTY": "025",
-        "NAME": "Grant",
+        "NAME": "GRANT",
         "LSAD": "County",
         "CENSUSAREA": 2679.513,
         "LATLONG": [47.261712, -118.979519],
-        "ANALOG": [44.245725, -89.59798]
+        "ANALOG": [46.000787, -117.996911],
+        "CLOSESTANALOG": "UMATILLA"
       },
       "geometry": {
         "type": "Polygon",
@@ -374,13 +386,15 @@
       "type": "Feature",
       "properties": {
         "GEO_ID": "0500000US53005",
-        "STATE": "53",
+        "STATEID": "53",
+        "STATE": "WA",
         "COUNTY": "005",
-        "NAME": "Benton",
+        "NAME": "BENTON",
         "LSAD": "County",
         "CENSUSAREA": 1700.379,
         "LATLONG": [45.835962, -119.868135],
-        "ANALOG": [44.245725, -89.59798]
+        "ANALOG": [46.593606, -118.228928],
+        "CLOSESTANALOG": "WALLA WALLA"
       },
       "geometry": {
         "type": "Polygon",
@@ -426,13 +440,15 @@
       "type": "Feature",
       "properties": {
         "GEO_ID": "0500000US48215",
-        "STATE": "48",
+        "STATEID": "48",
+        "STATE": "TX",
         "COUNTY": "215",
-        "NAME": "Hidalgo",
+        "NAME": "HIDALGO",
         "LSAD": "County",
         "CENSUSAREA": 1570.865,
         "LATLONG": [26.348156, -97.861875],
-        "ANALOG": [44.245725, -89.59798]
+        "ANALOG": [26.348156, -97.861875],
+        "CLOSESTANALOG": "HIDALGO"
       },
       "geometry": {
         "type": "Polygon",
@@ -472,13 +488,15 @@
       "type": "Feature",
       "properties": {
         "GEO_ID": "0500000US41059",
-        "STATE": "41",
+        "STATEID": "41",
+        "STATE": "OR",
         "COUNTY": "059",
-        "NAME": "Umatilla",
+        "NAME": "UMATILLA",
         "LSAD": "County",
         "CENSUSAREA": 3215.509,
-        "LATLONG": [46.000787, -117.996911],
-        "ANALOG": [44.245725, -89.59798]
+        "LATLONG": [45.969134, -119.027056],
+        "ANALOG": [46.593606, -118.228928],
+        "CLOSESTANALOG": "WALLA WALLA"
       },
       "geometry": {
         "type": "Polygon",
@@ -549,13 +567,15 @@
       "type": "Feature",
       "properties": {
         "GEO_ID": "0500000US41047",
-        "STATE": "41",
+        "STATEID": "41",
+        "STATE": "OR",
         "COUNTY": "047",
-        "NAME": "Marion",
+        "NAME": "MARION",
         "LSAD": "County",
         "CENSUSAREA": 1182.326,
         "LATLONG": [44.885782, -121.734167],
-        "ANALOG": [44.245725, -89.59798]
+        "ANALOG": [44.885782, -121.734167],
+        "CLOSESTANALOG": "MARION"
       },
       "geometry": {
         "type": "Polygon",
@@ -604,13 +624,15 @@
       "type": "Feature",
       "properties": {
         "GEO_ID": "0500000US36037",
-        "STATE": "36",
+        "STATEID": "36",
+        "STATE": "NY",
         "COUNTY": "037",
-        "NAME": "Genesee",
+        "NAME": "GENESEE_NY",
         "LSAD": "County",
         "CENSUSAREA": 492.936,
         "LATLONG": [42.867461, -78.464381],
-        "ANALOG": [44.245725, -89.59798]
+        "ANALOG": [42.867461, -78.464381],
+        "CLOSESTANALOG": "GENESEE_NY"
       },
       "geometry": {
         "type": "Polygon",
@@ -636,13 +658,15 @@
       "type": "Feature",
       "properties": {
         "GEO_ID": "0500000US26049",
-        "STATE": "26",
+        "STATEID": "26",
+        "STATE": "MI",
         "COUNTY": "049",
-        "NAME": "Genesee",
+        "NAME": "GENESEE",
         "LSAD": "County",
         "CENSUSAREA": 636.977,
         "LATLONG": [42.88075, -83.927555],
-        "ANALOG": [44.245725, -89.59798]
+        "ANALOG": [41.759085, -85.724534],
+        "CLOSESTANALOG": "ST. JOSEPH"
       },
       "geometry": {
         "type": "Polygon",
@@ -668,13 +692,15 @@
       "type": "Feature",
       "properties": {
         "GEO_ID": "0500000US38099",
-        "STATE": "38",
+        "STATEID": "38",
+        "STATE": "ND",
         "COUNTY": "099",
-        "NAME": "Walsh",
+        "NAME": "WALSH",
         "LSAD": "County",
         "CENSUSAREA": 1281.931,
         "LATLONG": [48.543773, -98.318098],
-        "ANALOG": [44.245725, -89.59798]
+        "ANALOG": [44.45665, -94.78063],
+        "CLOSESTANALOG": "RENVILLE"
       },
       "geometry": {
         "type": "Polygon",
@@ -709,13 +735,15 @@
       "type": "Feature",
       "properties": {
         "GEO_ID": "0500000US27047",
-        "STATE": "27",
+        "STATEID": "27",
+        "STATE": "MN",
         "COUNTY": "047",
-        "NAME": "Freeborn",
+        "NAME": "FREEBORN",
         "LSAD": "County",
         "CENSUSAREA": 707.087,
         "LATLONG": [43.848139, -93.64829],
-        "ANALOG": [44.245725, -89.59798]
+        "ANALOG": [44.745167, -92.802402],
+        "CLOSESTANALOG": "DAKOTA"
       },
       "geometry": {
         "type": "Polygon",
@@ -750,13 +778,15 @@
       "type": "Feature",
       "properties": {
         "GEO_ID": "0500000US27037",
-        "STATE": "27",
+        "STATEID": "27",
+        "STATE": "MN",
         "COUNTY": "037",
-        "NAME": "Dakota",
+        "NAME": "DAKOTA",
         "LSAD": "County",
         "CENSUSAREA": 562.168,
         "LATLONG": [44.745167, -92.802402],
-        "ANALOG": [44.245725, -89.59798]
+        "ANALOG": [43.893415, -88.46757],
+        "CLOSESTANALOG": "FOND DU LAC"
       },
       "geometry": {
         "type": "Polygon",
@@ -801,13 +831,15 @@
       "type": "Feature",
       "properties": {
         "GEO_ID": "0500000US27129",
-        "STATE": "27",
+        "STATEID": "27",
+        "STATE": "MN",
         "COUNTY": "129",
-        "NAME": "Renville",
+        "NAME": "RENVILLE",
         "LSAD": "County",
         "CENSUSAREA": 982.906,
         "LATLONG": [44.45665, -94.78063],
-        "ANALOG": [44.245725, -89.59798]
+        "ANALOG": [44.745167, -92.802402],
+        "CLOSESTANALOG": "DAKOTA"
       },
       "geometry": {
         "type": "Polygon",
@@ -835,13 +867,15 @@
       "type": "Feature",
       "properties": {
         "GEO_ID": "0500000US27111",
-        "STATE": "27",
+        "STATEID": "27",
+        "STATE": "MN",
         "COUNTY": "111",
-        "NAME": "Otter Tail",
+        "NAME": "OTTER TAIL",
         "LSAD": "County",
         "CENSUSAREA": 1972.068,
         "LATLONG": [46.36888, -95.15557],
-        "ANALOG": [44.245725, -89.59798]
+        "ANALOG": [44.45665, -94.78063],
+        "CLOSESTANALOG": "RENVILLE"
       },
       "geometry": {
         "type": "Polygon",
@@ -866,13 +900,15 @@
       "type": "Feature",
       "properties": {
         "GEO_ID": "0500000US26117",
-        "STATE": "26",
+        "STATEID": "26",
+        "STATE": "MI",
         "COUNTY": "117",
-        "NAME": "Montcalm",
+        "NAME": "MONTCALM",
         "LSAD": "County",
         "CENSUSAREA": 705.399,
         "LATLONG": [43.118793, -85.312513],
-        "ANALOG": [44.245725, -89.59798]
+        "ANALOG": [41.759085, -85.724534],
+        "CLOSESTANALOG": "ST. JOSEPH"
       },
       "geometry": {
         "type": "Polygon",
@@ -894,13 +930,15 @@
       "type": "Feature",
       "properties": {
         "GEO_ID": "0500000US23003",
-        "STATE": "23",
+        "STATEID": "23",
+        "STATE": "ME",
         "COUNTY": "003",
-        "NAME": "Aroostook",
+        "NAME": "AROOSTOOK",
         "LSAD": "County",
         "CENSUSAREA": 6671.33,
         "LATLONG": [45.581204, -68.433001],
-        "ANALOG": [44.245725, -89.59798]
+        "ANALOG": [45.028917, -88.98168],
+        "CLOSESTANALOG": "LANGLADE"
       },
       "geometry": {
         "type": "Polygon",
@@ -980,13 +1018,15 @@
       "type": "Feature",
       "properties": {
         "GEO_ID": "0500000US16067",
-        "STATE": "16",
+        "STATEID": "16",
+        "STATE": "ID",
         "COUNTY": "067",
-        "NAME": "Minidoka",
+        "NAME": "MINIDOKA",
         "LSAD": "County",
         "CENSUSAREA": 757.591,
         "LATLONG": [42.535275, -113.931799],
-        "ANALOG": [44.245725, -89.59798]
+        "ANALOG": [43.623011, -112.697408],
+        "CLOSESTANALOG": "BINGHAM"
       },
       "geometry": {
         "type": "Polygon",
@@ -1013,13 +1053,15 @@
       "type": "Feature",
       "properties": {
         "GEO_ID": "0500000US16027",
-        "STATE": "16",
+        "STATEID": "16",
+        "STATE": "ID",
         "COUNTY": "027",
-        "NAME": "Canyon",
+        "NAME": "CANYON",
         "LSAD": "County",
         "CENSUSAREA": 587.37,
         "LATLONG": [43.680865, -117.026623],
-        "ANALOG": [44.245725, -89.59798]
+        "ANALOG": [43.680865, -117.026623],
+        "CLOSESTANALOG": "CANYON"
       },
       "geometry": {
         "type": "Polygon",
@@ -1055,13 +1097,15 @@
       "type": "Feature",
       "properties": {
         "GEO_ID": "0500000US16011",
-        "STATE": "16",
+        "STATEID": "16",
+        "STATE": "ID",
         "COUNTY": "011",
-        "NAME": "Bingham",
+        "NAME": "BINGHAM",
         "LSAD": "County",
         "CENSUSAREA": 2093.978,
         "LATLONG": [43.623011, -112.697408],
-        "ANALOG": [44.245725, -89.59798]
+        "ANALOG": [42.535275, -113.931799],
+        "CLOSESTANALOG": "MINIDOKA"
       },
       "geometry": {
         "type": "Polygon",
@@ -1097,13 +1141,15 @@
       "type": "Feature",
       "properties": {
         "GEO_ID": "0500000US13087",
-        "STATE": "13",
+        "STATEID": "13",
+        "STATE": "GA",
         "COUNTY": "087",
-        "NAME": "Decatur",
+        "NAME": "DECATUR",
         "LSAD": "County",
         "CENSUSAREA": 597.14,
         "LATLONG": [31.0784, -84.508078],
-        "ANALOG": [44.245725, -89.59798]
+        "ANALOG": [28.361712, -81.818903],
+        "CLOSESTANALOG": "POLK"
       },
       "geometry": {
         "type": "Polygon",
@@ -1129,13 +1175,15 @@
       "type": "Feature",
       "properties": {
         "GEO_ID": "0500000US12051",
-        "STATE": "12",
+        "STATEID": "12",
+        "STATE": "FL",
         "COUNTY": "051",
-        "NAME": "Hendry",
+        "NAME": "HENDRY",
         "LSAD": "County",
         "CENSUSAREA": 1152.75,
         "LATLONG": [26.259455, -80.879809],
-        "ANALOG": [44.245725, -89.59798]
+        "ANALOG": [26.259455, -80.879809],
+        "CLOSESTANALOG": "HENDRY"
       },
       "geometry": {
         "type": "Polygon",
@@ -1160,13 +1208,15 @@
       "type": "Feature",
       "properties": {
         "GEO_ID": "0500000US12105",
-        "STATE": "12",
+        "STATEID": "12",
+        "STATE": "FL",
         "COUNTY": "105",
-        "NAME": "Polk",
+        "NAME": "POLK",
         "LSAD": "County",
         "CENSUSAREA": 1797.837,
         "LATLONG": [28.361712, -81.818903],
-        "ANALOG": [44.245725, -89.59798]
+        "ANALOG": [28.361712, -81.818903],
+        "CLOSESTANALOG": "POLK"
       },
       "geometry": {
         "type": "Polygon",
@@ -1205,13 +1255,15 @@
       "type": "Feature",
       "properties": {
         "GEO_ID": "0500000US12109",
-        "STATE": "12",
+        "STATEID": "12",
+        "STATE": "FL",
         "COUNTY": "109",
-        "NAME": "St. Johns",
+        "NAME": "ST. JOHNS",
         "LSAD": "County",
         "CENSUSAREA": 600.655,
         "LATLONG": [30.130541, -81.601212],
-        "ANALOG": [44.245725, -89.59798]
+        "ANALOG": [28.361712, -81.818903],
+        "CLOSESTANALOG": "POLK"
       },
       "geometry": {
         "type": "Polygon",
@@ -1253,13 +1305,15 @@
       "type": "Feature",
       "properties": {
         "GEO_ID": "0500000US26149",
-        "STATE": "26",
+        "STATEID": "26",
+        "STATE": "MI",
         "COUNTY": "149",
-        "NAME": "St. Joseph",
+        "NAME": "ST. JOSEPH",
         "LSAD": "County",
         "CENSUSAREA": 500.591,
         "LATLONG": [41.759085, -85.724534],
-        "ANALOG": [44.245725, -89.59798]
+        "ANALOG": [41.759085, -85.724534],
+        "CLOSESTANALOG": "ST. JOSEPH"
       },
       "geometry": {
         "type": "Polygon",
@@ -1301,13 +1355,15 @@
       "type": "Feature",
       "properties": {
         "GEO_ID": "0500000US08105",
-        "STATE": "08",
+        "STATEID": "08",
+        "STATE": "CO",
         "COUNTY": "105",
-        "NAME": "Rio Grande",
+        "NAME": "RIO GRANDE",
         "LSAD": "County",
         "CENSUSAREA": 911.958,
         "LATLONG": [37.404228, -106.710775],
-        "ANALOG": [44.245725, -89.59798]
+        "ANALOG": [37.404228, -106.710775],
+        "CLOSESTANALOG": "RIO GRANDE"
       },
       "geometry": {
         "type": "Polygon",
@@ -1330,13 +1386,15 @@
       "type": "Feature",
       "properties": {
         "GEO_ID": "0500000US06113",
-        "STATE": "06",
+        "STATEID": "06",
+        "STATE": "CA",
         "COUNTY": "113",
-        "NAME": "Yolo",
+        "NAME": "YOLO",
         "LSAD": "County",
         "CENSUSAREA": 1014.689,
         "LATLONG": [38.466563, -121.504139],
-        "ANALOG": [44.245725, -89.59798]
+        "ANALOG": [38.466563, -121.504139],
+        "CLOSESTANALOG": "YOLO"
       },
       "geometry": {
         "type": "Polygon",
@@ -1384,13 +1442,15 @@
       "type": "Feature",
       "properties": {
         "GEO_ID": "0500000US06053",
-        "STATE": "06",
+        "STATEID": "06",
+        "STATE": "CA",
         "COUNTY": "053",
-        "NAME": "Monterey",
+        "NAME": "MONTEREY",
         "LSAD": "County",
         "CENSUSAREA": 3280.595,
         "LATLONG": [35.789276, -120.213979],
-        "ANALOG": [44.245725, -89.59798]
+        "ANALOG": [35.789276, -120.213979],
+        "CLOSESTANALOG": "MONTEREY"
       },
       "geometry": {
         "type": "Polygon",
@@ -1513,13 +1573,15 @@
       "type": "Feature",
       "properties": {
         "GEO_ID": "0500000US06025",
-        "STATE": "06",
+        "STATEID": "06",
+        "STATE": "CA",
         "COUNTY": "025",
-        "NAME": "Imperial",
+        "NAME": "IMPERIAL",
         "LSAD": "County",
         "CENSUSAREA": 4176.603,
         "LATLONG": [32.904115, -116.103137],
-        "ANALOG": [44.245725, -89.59798]
+        "ANALOG": [32.904115, -116.103137],
+        "CLOSESTANALOG": "IMPERIAL"
       },
       "geometry": {
         "type": "Polygon",
@@ -1575,13 +1637,15 @@
       "type": "Feature",
       "properties": {
         "GEO_ID": "0500000US06019",
-        "STATE": "06",
+        "STATEID": "06",
+        "STATE": "CA",
         "COUNTY": "019",
-        "NAME": "Fresno",
+        "NAME": "FRESNO",
         "LSAD": "County",
         "CENSUSAREA": 5957.991,
         "LATLONG": [36.488835, -119.573194],
-        "ANALOG": [44.245725, -89.59798]
+        "ANALOG": [36.488835, -119.573194],
+        "CLOSESTANALOG": "FRESNO"
       },
       "geometry": {
         "type": "Polygon",
@@ -1641,13 +1705,15 @@
       "type": "Feature",
       "properties": {
         "GEO_ID": "0500000US04013",
-        "STATE": "04",
+        "STATEID": "04",
+        "STATE": "AR",
         "COUNTY": "013",
-        "NAME": "Maricopa",
+        "NAME": "MARICOPA",
         "LSAD": "County",
         "CENSUSAREA": 9200.143,
         "LATLONG": [33.465902, -111.580626],
-        "ANALOG": [44.245725, -89.59798]
+        "ANALOG": [33.465902, -111.580626],
+        "CLOSESTANALOG": "MARICOPA"
       },
       "geometry": {
         "type": "Polygon",

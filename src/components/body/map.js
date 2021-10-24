@@ -1,5 +1,5 @@
 import { propNames } from "@chakra-ui/styled-system";
-import React, { useMemo, useState } from "react";
+import React, { useMemo, useState, useEffect, useRef } from "react";
 import {
   MapContainer,
   // Marker,
@@ -12,14 +12,7 @@ import {
   useMap,
   Polyline,
 } from "react-leaflet";
-// import L from "leaflet";
 import US_Counties from "./counties.json";
-
-// const customMarker = new L.icon({
-//   iconUrl: "https://unpkg.com/leaflet@1.4.0/dist/images/marker-icon.png",
-//   iconSize: [25, 41],
-//   iconAnchor: [13, 0],
-// });
 
 const innerBounds = [
   [49.505, -2.09],
@@ -30,6 +23,13 @@ const outerBounds = [
   [52.505, 29.09],
 ];
 
+// US_Counties.features.map((cnty) => {
+//   console.log(cnty.geometry.coordinates);
+// });
+
+// const map_regions = US_Counties.features.geometry.coordinates;
+// console.log(map_regions);
+
 const redColor = { color: "red" };
 const whiteColor = { color: "white" };
 
@@ -37,6 +37,7 @@ function SetBoundsRectangles() {
   const [bounds, setBounds] = useState(outerBounds);
   const map = useMap();
 
+  // console.log(US_Counties.features.geometry);
   const innerHandlers = useMemo(
     () => ({
       click() {
@@ -72,6 +73,21 @@ function SetBoundsRectangles() {
   );
 }
 
+function usePrevious(value) {
+  const ref = useRef();
+  useEffect(() => {
+    ref.current = value;
+  });
+  return ref.current;
+}
+
+function Counter(val) {
+  console.log(val);
+  const prevCount = usePrevious(val);
+  console.log("prevCount", prevCount);
+  return prevCount;
+}
+
 export default function MainMap(props) {
   const [countyName, setCountyName] = React.useState("");
   const [analoglatlong, setAnaloglatlong] = React.useState([
@@ -85,6 +101,25 @@ export default function MainMap(props) {
   const position = [39.742043, -104.991531];
   const counties = US_Counties;
   const blueOptions = { color: "red" };
+  // console.log("props", props);
+  // var prevLat = Counter(props.sendLat);
+  // var prevLong = Counter(props.sendLong);
+  // if (
+  //   props.sendLat !== "1" &&
+  //   countylatlong[0] !== props.sendLat &&
+  //   countylatlong[1] !== props.sendLong
+  // ) {
+  //   console.log("Countylatlong: ", [props.sendLat, props.sendLong]);
+  //   setCountylatlong([props.sendLat, props.sendLong]);
+  // }
+
+  // if (
+  //   analoglatlong[0] !== props.sendAnalogLat &&
+  //   analoglatlong[1] !== props.sendAnalogLong
+  // ) {
+  //   // console.log([props.sendLat, props.sendLong]);
+  //   setAnaloglatlong([props.sendAnalogLat, props.sendAnalogLong]);
+  // }
 
   function onEachFeature(feature, layer) {
     if (feature.properties) {
@@ -96,13 +131,18 @@ export default function MainMap(props) {
       layer.on("click", function(e) {
         setCountyName(feature.properties.NAME);
         // props.getcountyName(feature.properties.NAME);
-        props.getcountyName(feature.properties.NAME);
+        props.getcountyName(
+          feature.properties.NAME,
+          feature.properties.STATE,
+          feature.properties.LATLONG,
+          feature.properties.CLOSESTANALOG
+        );
         setCountylatlong(feature.properties.LATLONG);
         setAnaloglatlong(feature.properties.ANALOG);
       });
     }
   }
-  console.log(countylatlong);
+
   return (
     <div id="map">
       <MapContainer

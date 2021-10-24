@@ -63,13 +63,43 @@ export default function Navigate() {
   const whiteColor = useColorModeValue("#CBD5E0", "#1A202C");
   const blackColor = useColorModeValue("#1A202C", "#CBD5E0");
 
-  const [ctyName, setCtyName] = React.useState("Walla Walla");
+  const [ctyName, setCtyName] = React.useState("WALLA WALLA");
+  const [closestAnalog, setClosestAnalog] = React.useState("UMATILLA");
+  const [stateId, setStateId] = React.useState("1");
+  const [countyLat, setCountyLat] = React.useState([46.593606, -118.228928]);
+  const [y, sety] = React.useState({});
+
+  const [sendLat, setSendLat] = React.useState("1");
+  const [sendLong, setSendLong] = React.useState("1");
+  const [sendAnalogLat, setSendAnalogLat] = React.useState("1");
+  const [sendAnalogLong, setSendAnalogLong] = React.useState("1");
+  const [sendCnty, setSendCnty] = React.useState("1");
+  const [sendAnalog, setSendAnalog] = React.useState("1");
+  const [sendState, setSendState] = React.useState("1");
 
   const counties = US_Counties;
 
-  function getCountyName1(countyName) {
+  function getCountyName1(countyName, state_id, cntLat, analog) {
+    // var hmap = { countyName: countyName, state_id: state_id, cntLat: cntLat };
+    // sety(hmap);
     setCtyName(countyName);
+    setStateId(state_id);
+    setCountyLat(cntLat);
+    setClosestAnalog(analog);
   }
+  function storeName(v) {
+    v = v.split(",");
+    console.log("vvvv: ", v);
+    setSendLat(parseFloat(v[0]));
+    setSendLong(parseFloat(v[1]));
+    setSendAnalogLat(parseFloat(v[2]));
+    setSendAnalogLong(parseFloat(v[3]));
+    setCtyName(v[4]);
+    setClosestAnalog(v[5]);
+    setStateId(v[6]);
+    setCountyLat([parseFloat(v[0]), parseFloat(v[1])]);
+  }
+
   return (
     <Flex flexDir="column" h="100vh">
       {/* -----------------------header -----------------------*/}
@@ -117,9 +147,30 @@ export default function Navigate() {
                 </Text>
               </Box>
               <Box w="100%">
-                <Select textAlign="center" size="sm" p={0} placeholder="COUNTY">
+                <Select
+                  onClick={(e) => {
+                    storeName(e.target.value);
+                  }}
+                  textAlign="center"
+                  size="sm"
+                  p={0}
+                  placeholder="COUNTY"
+                >
                   {counties.features.map((cnty) => {
-                    <option value="Walla Walla">{cnty.properties.NAME}</option>;
+                    return (
+                      <option
+                        key={cnty.properties.NAME}
+                        value={[
+                          cnty.properties.LATLONG,
+                          cnty.properties.ANALOG,
+                          cnty.properties.NAME,
+                          cnty.properties.CLOSESTANALOG,
+                          cnty.properties.STATE,
+                        ]}
+                      >
+                        {cnty.properties.NAME}, {cnty.properties.STATE}
+                      </option>
+                    );
                   })}
                 </Select>
               </Box>
@@ -140,7 +191,7 @@ export default function Navigate() {
                   align="center"
                   size="sm"
                   p={0}
-                  placeholder="SELECT COUNTY"
+                  placeholder="SELECT MODEL"
                 >
                   <option value="Walla Walla">Walla Walla</option>
                   <option value="Fresno">Fresno</option>
@@ -175,7 +226,13 @@ export default function Navigate() {
               ratio={22 / 9}
             > */}
             <div>
-              <Maps getcountyName={getCountyName1} />
+              <Maps
+                getcountyName={getCountyName1}
+                sendLat={sendLat}
+                sendLong={sendLong}
+                sendAnalogLat={sendAnalogLat}
+                sendAnalogLong={sendAnalogLong}
+              />
             </div>
             {/* <iframe
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3963.952912260219!2d3.375295414770757!3d6.5276316452784755!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x103b8b2ae68280c1%3A0xdc9e87a367c3d9cb!2sLagos!5e0!3m2!1sen!2sng!4v1567723392506!5m2!1sen!2sng"
@@ -238,7 +295,7 @@ export default function Navigate() {
                       </Badge> */}
                     </Text>
                     <Text fontWeight="bold" fontSize="large" color="teal">
-                      Umatilla
+                      {closestAnalog}
                     </Text>
                   </Box>
                 </Flex>
@@ -346,23 +403,23 @@ export default function Navigate() {
                   color="teal"
                   mt="-2"
                 >
-                  WA
+                  {stateId}
                 </Text>
                 <Divider />
               </Box>
             </Flex>
 
-            <Grid templateColumns="repeat(5, 1fr)" gap={4}>
+            <Grid templateColumns="repeat(5, 1fr)" gap={1}>
               <GridItem colSpan={2} h="10">
                 <Text
                   align="right"
                   fontWeight="bold"
                   color="teal"
-                  mr="1"
+                  // mr="1"
                   fontSize="large"
                   mt="1"
                 >
-                  -112.43
+                  {countyLat[1]}
                 </Text>
                 <Text align="right" fontSize="smaller" color="gray" mt="-2">
                   LONGITUDE
@@ -374,11 +431,11 @@ export default function Navigate() {
                   align="left"
                   fontWeight="bold"
                   color="teal"
-                  ml="-1"
+                  // ml="-1"
                   fontSize="large"
                   mt="1"
                 >
-                  -112.43
+                  {countyLat[0]}
                 </Text>
                 <Text
                   align="left"
