@@ -50,10 +50,10 @@ export default function Navigate() {
     -118.228928,
   ]);
 
-  const [sendLat, setSendLat] = React.useState("1");
-  const [sendLong, setSendLong] = React.useState("1");
-  const [sendAnalogLat, setSendAnalogLat] = React.useState("1");
-  const [sendAnalogLong, setSendAnalogLong] = React.useState("1");
+  const [sendLat, setSendLat] = React.useState(39.828175);
+  const [sendLong, setSendLong] = React.useState(-98.5795);
+  const [sendAnalogLat, setSendAnalogLat] = React.useState(39.828175);
+  const [sendAnalogLong, setSendAnalogLong] = React.useState(-98.5795);
   // const [sendCnty, setSendCnty] = React.useState("1");
   // const [sendAnalog, setSendAnalog] = React.useState("1");
   // const [sendState, setSendState] = React.useState("1");

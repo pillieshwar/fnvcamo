@@ -3,7 +3,7 @@ import React, {
   useMemo,
   useState,
   // useEffect,
-  // useRef,
+  useRef,
   // useMapEvent,
 } from "react";
 import {
@@ -38,6 +38,9 @@ const outerBounds = [
   [-88.885697, 43.895184],
   [-88.46757, 43.893415],
 ];
+
+const initLat = 39.828175;
+const initLong = -98.5795;
 
 const redColor = { color: "red" };
 const whiteColor = { color: "white" };
@@ -92,9 +95,23 @@ export default function MainMap(props) {
   //   4.245725,
   //   -89.59798,
   // ]);
+  const animateRef = useRef(false);
   const position = [39.742043, -104.991531];
   const counties = US_Counties;
   const blueOptions = { color: "red" };
+
+  function SetViewOnClick() {
+    const map = useMap();
+    let zoomLevel = 7;
+    var latValue = (props.sendLat + props.sendAnalogLat) / 2;
+    var longValue = (props.sendLong + props.sendAnalogLong) / 2;
+
+    if (props.sendLat === initLat && props.sendLong === initLong) {
+      zoomLevel = 4;
+    }
+    map.setView([latValue, longValue], zoomLevel);
+    return null;
+  }
 
   function onEachFeature(feature, layer) {
     if (feature.properties) {
@@ -139,6 +156,7 @@ export default function MainMap(props) {
             [props.sendAnalogLat, props.sendAnalogLong],
           ]}
         />
+        <SetViewOnClick animateRef={animateRef} />
       </MapContainer>
     </div>
   );
