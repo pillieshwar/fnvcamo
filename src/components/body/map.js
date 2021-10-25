@@ -109,8 +109,11 @@ export default function MainMap(props) {
   //   countylatlong[0] !== props.sendLat &&
   //   countylatlong[1] !== props.sendLong
   // ) {
-  //   console.log("Countylatlong: ", [props.sendLat, props.sendLong]);
-  //   setCountylatlong([props.sendLat, props.sendLong]);
+  //   console.log("if");
+  // console.log("Countylatlong: ", [props.sendLat, props.sendLong]);
+  // console.log("Analoglatlong: ", [props.sendAnalogLat, props.sendAnalogLong]);
+  // setCountylatlong([props.sendLat, props.sendLong]);
+  // setAnaloglatlong([props.sendAnalogLat, props.sendAnalogLong]);
   // }
 
   // if (
@@ -129,16 +132,18 @@ export default function MainMap(props) {
         layer.bindPopup(`${NAME}`).openPopup();
       });
       layer.on("click", function(e) {
-        setCountyName(feature.properties.NAME);
+        console.log("oneachfeature -- click");
+        // setCountyName(feature.properties.NAME);
         // props.getcountyName(feature.properties.NAME);
         props.getcountyName(
           feature.properties.NAME,
           feature.properties.STATE,
           feature.properties.LATLONG,
+          feature.properties.ANALOG,
           feature.properties.CLOSESTANALOG
         );
-        setCountylatlong(feature.properties.LATLONG);
-        setAnaloglatlong(feature.properties.ANALOG);
+        // setCountylatlong(feature.properties.LATLONG);
+        // setAnaloglatlong(feature.properties.ANALOG);
       });
     }
   }
@@ -163,7 +168,10 @@ export default function MainMap(props) {
         ></GeoJSON>
         <Polyline
           pathOptions={blueOptions}
-          positions={[countylatlong, analoglatlong]}
+          positions={[
+            [props.sendLat, props.sendLong],
+            [props.sendAnalogLat, props.sendAnalogLong],
+          ]}
         />
       </MapContainer>
     </div>

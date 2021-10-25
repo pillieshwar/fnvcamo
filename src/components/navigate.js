@@ -53,6 +53,7 @@ import {
 import Maps from "./body/map";
 import US_Counties from "./body/counties.json";
 import RightDrawer from "./drawer";
+import Climate_Data from "./body/Climate_Data_All_Variables.json";
 
 export default function Navigate() {
   const { colorMode, toggleColorMode } = useColorMode();
@@ -67,6 +68,10 @@ export default function Navigate() {
   const [closestAnalog, setClosestAnalog] = React.useState("UMATILLA");
   const [stateId, setStateId] = React.useState("1");
   const [countyLat, setCountyLat] = React.useState([46.593606, -118.228928]);
+  const [analogLatLong, setAnalogLatLong] = React.useState([
+    46.593606,
+    -118.228928,
+  ]);
   const [y, sety] = React.useState({});
 
   const [sendLat, setSendLat] = React.useState("1");
@@ -79,17 +84,28 @@ export default function Navigate() {
 
   const counties = US_Counties;
 
-  function getCountyName1(countyName, state_id, cntLat, analog) {
+  function getCountyName1(
+    countyName,
+    state_id,
+    cntLatLong,
+    analogLatLong,
+    analog
+  ) {
     // var hmap = { countyName: countyName, state_id: state_id, cntLat: cntLat };
     // sety(hmap);
     setCtyName(countyName);
     setStateId(state_id);
-    setCountyLat(cntLat);
+    setCountyLat(cntLatLong);
+    setAnalogLatLong(analogLatLong);
     setClosestAnalog(analog);
+    setSendLat(parseFloat(cntLatLong[0]));
+    setSendLong(parseFloat(cntLatLong[1]));
+    setSendAnalogLat(parseFloat(analogLatLong[0]));
+    setSendAnalogLong(parseFloat(analogLatLong[1]));
   }
   function storeName(v) {
     v = v.split(",");
-    console.log("vvvv: ", v);
+    // console.log("vvvv: ", v);
     setSendLat(parseFloat(v[0]));
     setSendLong(parseFloat(v[1]));
     setSendAnalogLat(parseFloat(v[2]));
@@ -358,7 +374,7 @@ export default function Navigate() {
             </Box>
             <Grid templateColumns="repeat(2, 1fr)" mt={1} gap={2}>
               <Box w="100%" h="10">
-                <RightDrawer />
+                <RightDrawer ctyName={ctyName} closestAnalog={closestAnalog} />
               </Box>
               <Box w="100%" h="10">
                 <Button
