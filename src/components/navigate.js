@@ -70,6 +70,7 @@ export default function Navigate() {
     "CSIRO-Mk3-6-0",
     "GFDL-ESM2G",
     "GFDL-ESM2M",
+    "HadGEM2-CC365",
     "HadGEM2-ES365",
     "IPSL-CSMA-LR",
     "IPSL-CSMA-MR",
@@ -167,7 +168,7 @@ export default function Navigate() {
                   textAlign="center"
                   size="sm"
                   p={0}
-                  placeholder="COUNTY"
+                  placeholder={ctyName}
                 >
                   {counties.features.map((cnty) => {
                     return (
@@ -196,7 +197,7 @@ export default function Navigate() {
               </Box>
               <Box w="100%">
                 <Select size="sm" p={0} placeholder="EMISSION SCENARIO">
-                  <option value="historical">RCP 4.5</option>
+                  {/* <option value="historical">RCP 4.5</option> */}
                   <option value="rcp45">RCP 4.5</option>
                   <option value="rcp85">RCP 8.5</option>
                 </Select>
@@ -206,7 +207,7 @@ export default function Navigate() {
                   align="center"
                   size="sm"
                   p={0}
-                  placeholder="SELECT MODEL"
+                  placeholder={model}
                   onClick={(e) => {
                     storeModel(e.target.value);
                   }}

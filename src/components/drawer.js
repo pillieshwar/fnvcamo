@@ -204,7 +204,7 @@ export default function RightDrawer(props) {
                     //   boxpoints: "Outliers",
                     // },
                     {
-                      y: cntyClimateDataYearRCP45,
+                      y: cntyClimateDataRCP45,
                       type: "box",
                       name: props.ctyName + " RCP45",
                       marker: {
@@ -213,7 +213,7 @@ export default function RightDrawer(props) {
                       boxpoints: "Outliers",
                     },
                     {
-                      y: analogClimateDataYearRCP45,
+                      y: analogClimateDataRCP45,
                       type: "box",
                       name: props.closestAnalog + " RCP45",
                       marker: {
@@ -222,7 +222,7 @@ export default function RightDrawer(props) {
                       boxpoints: "Outliers",
                     },
                     {
-                      y: cntyClimateDataYearRCP85,
+                      y: cntyClimateDataRCP85,
                       type: "box",
                       name: props.ctyName + " RCP85",
                       marker: {
@@ -231,7 +231,7 @@ export default function RightDrawer(props) {
                       boxpoints: "Outliers",
                     },
                     {
-                      y: analogClimateDataYearRCP85,
+                      y: analogClimateDataRCP85,
                       type: "box",
                       name: props.closestAnalog + " RCP85",
                       marker: {
