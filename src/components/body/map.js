@@ -8,7 +8,7 @@ import React, {
 } from "react";
 import {
   MapContainer,
-  // Marker,
+  Marker,
   // Circle,
   // Popup,
   TileLayer,
@@ -17,8 +17,10 @@ import {
   Rectangle,
   useMap,
   Polyline,
+  Polygon,
 } from "react-leaflet";
 import US_Counties from "./counties.json";
+import US_all_counties from "./otherCounties.json";
 
 const innerBounds = [
   [49.505, -2.09],
@@ -86,23 +88,16 @@ function SetBoundsRectangles() {
 }
 
 export default function MainMap(props) {
-  // const [countyName, setCountyName] = React.useState("");
-  // const [analoglatlong, setAnaloglatlong] = React.useState([
-  //   4.245725,
-  //   -89.59798,
-  // ]);
-  // const [countylatlong, setCountylatlong] = React.useState([
-  //   4.245725,
-  //   -89.59798,
-  // ]);
   const animateRef = useRef(false);
   const position = [39.742043, -104.991531];
   const counties = US_Counties;
-  const blueOptions = { color: "red" };
+  const blueOptions = { color: "blue" };
+  const greyOptions = { color: "grey" };
+  const redOptions = { color: "red" };
 
   function SetViewOnClick() {
     const map = useMap();
-    let zoomLevel = 7;
+    let zoomLevel = 6;
     var latValue = (props.sendLat + props.sendAnalogLat) / 2;
     var longValue = (props.sendLong + props.sendAnalogLong) / 2;
 
@@ -116,9 +111,10 @@ export default function MainMap(props) {
   function onEachFeature(feature, layer) {
     if (feature.properties) {
       const { NAME } = feature.properties;
+      const { STATE } = feature.properties;
       // const n = `${NAME}`;
       layer.on("mouseover", function(e) {
-        layer.bindPopup(`${NAME}`).openPopup();
+        layer.bindPopup(`${NAME}, ${STATE}`).openPopup();
       });
       layer.on("click", function(e) {
         props.getcountyName(
@@ -126,10 +122,30 @@ export default function MainMap(props) {
           feature.properties.STATE,
           feature.properties.LATLONG,
           feature.properties.ANALOG,
-          feature.properties.CLOSESTANALOG
+          feature.properties.CLOSESTANALOG,
+          feature.geometry.coordinates,
+          feature.properties.ANALOGCOORDINATES
         );
       });
     }
+  }
+
+  const animals = [];
+  var multiPolygon = props.countyCoordinates[0];
+  var temp1 = 0;
+  var temp2 = 0;
+  for (let i = 0; i < multiPolygon.length; i++) {
+    temp1 = multiPolygon[i][0];
+    temp2 = multiPolygon[i][1];
+    animals.push([temp2, temp1]);
+  }
+
+  const analogGreeCoordinates = [];
+  var multiPolygonAnalog = props.analogCoordinates[0];
+  for (let i = 0; i < multiPolygonAnalog.length; i++) {
+    temp1 = multiPolygonAnalog[i][0];
+    temp2 = multiPolygonAnalog[i][1];
+    analogGreeCoordinates.push([temp2, temp1]);
   }
 
   return (
@@ -145,18 +161,33 @@ export default function MainMap(props) {
           attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
         />
         <SetBoundsRectangles />
+
+        <GeoJSON
+          data={US_all_counties.features}
+          // onEachFeature={onEachFeature}
+          weight={0.5}
+          pathOptions={greyOptions}
+        ></GeoJSON>
+
         <GeoJSON
           data={counties.features}
           onEachFeature={onEachFeature}
+          pathOptions={blueOptions}
         ></GeoJSON>
         <Polyline
-          pathOptions={blueOptions}
+          pathOptions={redOptions}
           positions={[
             [props.sendLat, props.sendLong],
             [props.sendAnalogLat, props.sendAnalogLong],
           ]}
         />
+        {/* <Marker position={[43.893415, -88.46757]}></Marker> */}
         <SetViewOnClick animateRef={animateRef} />
+        <Polygon pathOptions={{ color: "red" }} positions={animals}></Polygon>
+        <Polygon
+          pathOptions={{ color: "green" }}
+          positions={analogGreeCoordinates}
+        ></Polygon>
       </MapContainer>
     </div>
   );

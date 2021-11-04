@@ -49,7 +49,107 @@ export default function Navigate() {
     46.593606,
     -118.228928,
   ]);
-
+  const [countyCoordinates, setCountyCoordinates] = React.useState([
+    [
+      [-118.228928, 46.593606],
+      [-118.241611, 46.295072],
+      [-118.116139, 46.295455],
+      [-118.116493, 46.207912],
+      [-117.991292, 46.207843],
+      [-117.996911, 46.000787],
+      [-118.126197, 46.000282],
+      [-118.131019, 46.00028],
+      [-118.228941, 46.000421],
+      [-118.236584, 46.000418],
+      [-118.25253, 46.000459],
+      [-118.256368, 46.000439],
+      [-118.314982, 46.000453],
+      [-118.36779, 46.000622],
+      [-118.37836, 46.000574],
+      [-118.470756, 46.000632],
+      [-118.497027, 46.00062],
+      [-118.537119, 46.00084],
+      [-118.569392, 46.000773],
+      [-118.57571, 46.000718],
+      [-118.579906, 46.000818],
+      [-118.637725, 46.00097],
+      [-118.639332, 46.000994],
+      [-118.658717, 46.000955],
+      [-118.67787, 46.000935],
+      [-118.987129, 45.999855],
+      [-118.941075, 46.029339],
+      [-118.980933, 46.146296],
+      [-119.041418, 46.192856],
+      [-118.972827, 46.238705],
+      [-118.777228, 46.290177],
+      [-118.746199, 46.359512],
+      [-118.633826, 46.414022],
+      [-118.615592, 46.504543],
+      [-118.452637, 46.596973],
+      [-118.228928, 46.593606],
+    ],
+  ]);
+  const [analogCoordinates, setAnalogCoordinates] = React.useState([
+    [
+      [-117.996911, 46.000787],
+      [-117.977766, 46.000695],
+      [-117.977688, 45.860558],
+      [-117.972922, 45.860586],
+      [-117.973666, 45.816978],
+      [-118.045003, 45.817098],
+      [-118.066823, 45.688365],
+      [-118.117153, 45.688498],
+      [-118.117053, 45.470754],
+      [-118.198158, 45.470453],
+      [-118.197957, 45.427153],
+      [-118.428469, 45.428951],
+      [-118.428268, 45.355151],
+      [-118.697684, 45.345153],
+      [-118.696782, 45.257653],
+      [-118.655777, 45.196855],
+      [-118.546678, 45.196951],
+      [-118.548568, 45.080756],
+      [-118.519063, 44.995956],
+      [-119.163882, 44.995887],
+      [-119.146402, 45.082963],
+      [-119.14537, 45.516055],
+      [-119.248276, 45.516102],
+      [-119.248241, 45.601873],
+      [-119.434639, 45.602771],
+      [-119.432067, 45.913629],
+      [-119.37613, 45.920974],
+      [-119.322509, 45.933183],
+      [-119.25715, 45.939926],
+      [-119.225745, 45.932725],
+      [-119.19553, 45.92787],
+      [-119.169496, 45.927603],
+      [-119.12612, 45.932859],
+      [-119.093221, 45.942745],
+      [-119.027056, 45.969134],
+      [-119.008558, 45.97927],
+      [-118.987129, 45.999855],
+      [-118.67787, 46.000935],
+      [-118.658717, 46.000955],
+      [-118.639332, 46.000994],
+      [-118.637725, 46.00097],
+      [-118.579906, 46.000818],
+      [-118.57571, 46.000718],
+      [-118.569392, 46.000773],
+      [-118.537119, 46.00084],
+      [-118.497027, 46.00062],
+      [-118.470756, 46.000632],
+      [-118.37836, 46.000574],
+      [-118.36779, 46.000622],
+      [-118.314982, 46.000453],
+      [-118.256368, 46.000439],
+      [-118.25253, 46.000459],
+      [-118.236584, 46.000418],
+      [-118.228941, 46.000421],
+      [-118.131019, 46.00028],
+      [-118.126197, 46.000282],
+      [-117.996911, 46.000787],
+    ],
+  ]);
   const [sendLat, setSendLat] = React.useState(39.828175);
   const [sendLong, setSendLong] = React.useState(-98.5795);
   const [sendAnalogLat, setSendAnalogLat] = React.useState(39.828175);
@@ -87,7 +187,9 @@ export default function Navigate() {
     state_id,
     cntLatLong,
     analogLatLong,
-    analog
+    analog,
+    coordinates,
+    analogCoordinates
   ) {
     setCtyName(countyName);
     setStateId(state_id);
@@ -98,6 +200,8 @@ export default function Navigate() {
     setSendLong(parseFloat(cntLatLong[1]));
     setSendAnalogLat(parseFloat(analogLatLong[0]));
     setSendAnalogLong(parseFloat(analogLatLong[1]));
+    setCountyCoordinates(coordinates);
+    setAnalogCoordinates(analogCoordinates);
   }
   function storeName(v) {
     v = v.split(",");
@@ -109,6 +213,7 @@ export default function Navigate() {
     setClosestAnalog(v[5]);
     setStateId(v[6]);
     setCountyLat([parseFloat(v[0]), parseFloat(v[1])]);
+    // setCountyCoordinates(v[7]);
   }
 
   function storeModel(m) {
@@ -180,6 +285,7 @@ export default function Navigate() {
                           cnty.properties.NAME,
                           cnty.properties.CLOSESTANALOG,
                           cnty.properties.STATE,
+                          // cnty.geometry.coordinates,
                         ]}
                       >
                         {cnty.properties.NAME}, {cnty.properties.STATE}
@@ -240,6 +346,8 @@ export default function Navigate() {
                 sendLong={sendLong}
                 sendAnalogLat={sendAnalogLat}
                 sendAnalogLong={sendAnalogLong}
+                countyCoordinates={countyCoordinates}
+                analogCoordinates={analogCoordinates}
               />
             </div>
           </Flex>
@@ -274,7 +382,7 @@ export default function Navigate() {
                         New
                       </Badge> */}
                     </Text>
-                    <Text fontWeight="bold" fontSize="large" color="teal">
+                    <Text fontWeight="bold" fontSize="large" color="red">
                       {ctyName}
                     </Text>
                   </Box>
