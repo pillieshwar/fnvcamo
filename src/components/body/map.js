@@ -160,7 +160,7 @@ export default function MainMap(props) {
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
           attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
         />
-        <SetBoundsRectangles />
+        {/* <SetBoundsRectangles /> */}
 
         <GeoJSON
           data={US_all_counties.features}
