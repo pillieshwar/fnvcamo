@@ -20,19 +20,32 @@ import { Grid, GridItem } from "@chakra-ui/react";
 export default function RightDrawer(props) {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [model, setModel] = React.useState(props.model);
-  const [variable, setVariable] = React.useState("");
+  const [variable, setVariable] = React.useState("Tmin_JJA");
+  const [variable2, setVariable2] = React.useState("Tmax_JJA");
+  const [variable3, setVariable3] = React.useState("HSD_95_JJA");
+  const [variable4, setVariable4] = React.useState("GDD_JJA");
 
   // const { isOpenD, onOpenD, onCloseD } = useDisclosure();
   var cntyClimateDataHistorical = [];
+  var cntyClimateDataHistorical2 = [];
+  var cntyClimateDataHistorical3 = [];
+  var cntyClimateDataHistorical4 = [];
+
   var cntyClimateDataYearHistorical = [];
   var cntyClimateDataRCP45 = [];
   var cntyClimateDataYearRCP45 = [];
   var cntyClimateDataRCP85 = [];
+  var cntyClimateDataRCP852 = [];
+  var cntyClimateDataRCP853 = [];
+  var cntyClimateDataRCP854 = [];
   var cntyClimateDataYearRCP85 = [];
   var cntyPressureJJAHistorical = [];
   var cntyTempJJAHistorical = [];
 
   var analogClimateDataHistorical = [];
+  var analogClimateDataHistorical2 = [];
+  var analogClimateDataHistorical3 = [];
+  var analogClimateDataHistorical4 = [];
   var analogClimateDataYearHistorical = [];
   var analogClimateDataRCP45 = [];
   var analogClimateDataYearRCP45 = [];
@@ -136,6 +149,17 @@ export default function RightDrawer(props) {
   function storeVariables(m) {
     setVariable(m);
   }
+  function storeVariables2(m) {
+    setVariable2(m);
+  }
+
+  function storeVariables3(m) {
+    setVariable3(m);
+  }
+
+  function storeVariables4(m) {
+    setVariable4(m);
+  }
 
   randd.map((name) => {
     // console.log(name[0]);
@@ -157,6 +181,9 @@ export default function RightDrawer(props) {
       climateData.Model === model
     ) {
       cntyClimateDataHistorical.push(climateData[variable]);
+      cntyClimateDataHistorical2.push(climateData[variable2]);
+      cntyClimateDataHistorical3.push(climateData[variable3]);
+      cntyClimateDataHistorical4.push(climateData[variable4]);
       cntyClimateDataYearHistorical.push(climateData.year);
 
       cntyPressureJJAHistorical.push(climateData.Pr_JJA);
@@ -182,6 +209,9 @@ export default function RightDrawer(props) {
       climateData.Model === model
     ) {
       cntyClimateDataRCP85.push(climateData[variable]);
+      cntyClimateDataRCP852.push(climateData[variable2]);
+      cntyClimateDataRCP853.push(climateData[variable3]);
+      cntyClimateDataRCP854.push(climateData[variable4]);
       cntyClimateDataYearRCP85.push(climateData.year);
     }
 
@@ -194,6 +224,9 @@ export default function RightDrawer(props) {
       climateData.Model === model
     ) {
       analogClimateDataHistorical.push(climateData[variable]);
+      analogClimateDataHistorical2.push(climateData[variable2]);
+      analogClimateDataHistorical3.push(climateData[variable3]);
+      analogClimateDataHistorical4.push(climateData[variable4]);
       analogClimateDataYearHistorical.push(climateData.year);
     }
 
@@ -286,7 +319,7 @@ export default function RightDrawer(props) {
                   p={0}
                   placeholder={variable}
                   onClick={(e) => {
-                    storeVariables(e.target.value);
+                    storeVariables2(e.target.value);
                   }}
                 >
                   {dataVariables.map((indvVariables, index) => (
@@ -303,7 +336,7 @@ export default function RightDrawer(props) {
                   p={0}
                   placeholder={variable}
                   onClick={(e) => {
-                    storeVariables(e.target.value);
+                    storeVariables3(e.target.value);
                   }}
                 >
                   {dataVariables.map((indvVariables, index) => (
@@ -320,7 +353,7 @@ export default function RightDrawer(props) {
                   p={0}
                   placeholder={variable}
                   onClick={(e) => {
-                    storeVariables(e.target.value);
+                    storeVariables4(e.target.value);
                   }}
                 >
                   {dataVariables.map((indvVariables, index) => (
@@ -367,165 +400,206 @@ export default function RightDrawer(props) {
             </Grid>
           </DrawerHeader>
           <DrawerBody>
-            <VStack spacing={4} align="stretch">
-              <Box h="400px" w="400px">
-                <Plot
-                  data={[
-                    // {
-                    //   y: cntyClimateDataHistorical,
-                    //   type: "box",
-                    //   name: "Wiskers and Outliers0",
-                    //   marker: {
-                    //     color: "rgb(107,174,214)",
-                    //   },
-                    //   boxpoints: "Outliers",
-                    // },
-                    // {
-                    //   y: analogClimateDataHistorical,
-                    //   type: "box",
-                    //   name: "Wiskers and Outliers7",
-                    //   marker: {
-                    //     color: "rgb(107,174,214)",
-                    //   },
-                    //   boxpoints: "Outliers",
-                    // },
+            <VStack spacing={200} align="stretch">
+              <Grid templateColumns="repeat(2, 1fr)" gap={6}>
+                <Box mt="-8" ml="-3" h="200px" w="210px">
+                  <Plot
+                    ml="3"
+                    data={[
+                      {
+                        // self HSD - Historical
+                        x: cntyClimateDataHistorical,
+                        type: "violin",
+                        violinmode: "overlay",
+                        box: {
+                          visible: true,
+                        },
+                        hoverinfo: "x",
+                        // visible: "legendonly",
+                        boxpoints: true,
+                        name: props.ctyName + "<br>" + " Historical",
+                        marker: {
+                          color: "rgb(7,40,89)",
+                        },
+                        boxpoints: "Outliers",
+                        line: {
+                          color: "red",
+                        },
+                        opacity: 0.6,
+                        meanline: {
+                          visible: true,
+                        },
+                        x0: "OEE",
+                      },
 
-                    {
-                      // self HSD - Historical
-                      x: cntyClimateDataHistorical,
-                      type: "violin",
-                      violinmode: "overlay",
-                      box: {
-                        visible: true,
+                      {
+                        // Analog analogClimateData - Historical
+                        x: analogClimateDataHistorical,
+                        type: "violin",
+                        violinmode: "overlay",
+                        box: {
+                          visible: true,
+                        },
+                        hoverinfo: "x",
+                        // visible: "legendonly",
+                        boxpoints: true,
+                        name: props.closestAnalog + "<br>" + " Historical",
+                        marker: {
+                          color: "rgb(7,40,89)",
+                        },
+                        boxpoints: "Outliers",
+                        line: {
+                          color: "green",
+                        },
+                        opacity: 0.6,
+                        meanline: {
+                          visible: true,
+                        },
+                        x0: "OEE",
                       },
-                      hoverinfo: "x",
-                      // visible: "legendonly",
-                      boxpoints: true,
-                      name: props.ctyName + " Historical",
-                      marker: {
-                        color: "rgb(7,40,89)",
-                      },
-                      boxpoints: "Outliers",
-                      line: {
-                        color: "red",
-                      },
-                      opacity: 0.6,
-                      meanline: {
-                        visible: true,
-                      },
-                      x0: "OEE",
-                    },
+                      {
+                        // Self cntyClimateDataRCP85 - Mid-century
+                        x: cntyClimateDataRCP85,
+                        type: "violin",
+                        violinmode: "overlay",
+                        box: {
+                          visible: true,
+                        },
+                        hoverinfo: "x",
+                        // hoverlabel_align: "left",
 
-                    {
-                      // Analog analogClimateData - Historical
-                      x: analogClimateDataHistorical,
-                      type: "violin",
-                      violinmode: "overlay",
-                      box: {
-                        visible: true,
+                        // visible: "legendonly",
+                        boxpoints: true,
+                        name: props.ctyName + "<br>" + " Mid-Century",
+                        marker: {
+                          color: "rgb(7,40,89)",
+                        },
+                        boxpoints: "Outliers",
+                        line: {
+                          color: "red",
+                        },
+                        opacity: 0.6,
+                        meanline: {
+                          visible: true,
+                        },
+                        x0: "OEE",
                       },
-                      hoverinfo: "x",
-                      // visible: "legendonly",
-                      boxpoints: true,
-                      name: props.closestAnalog + " Historical",
-                      marker: {
-                        color: "rgb(7,40,89)",
+                    ]}
+                    layout={{
+                      width: 550,
+                      height: 380,
+                      traceorder: "reversed",
+                      legend: {
+                        // bgcolor: "magenta",
+                        x: -0.4,
+                        y: 1.5,
                       },
-                      boxpoints: "Outliers",
-                      line: {
-                        color: "green",
+                      points: "outliers",
+                      title: variable,
+                      // orientation: "h",
+                      showlegend: false,
+                    }}
+                  />
+                </Box>
+                <Box mt="-8" ml="20" h="200px" w="210px">
+                  <Plot
+                    data={[
+                      {
+                        // self HSD - Historical
+                        x: cntyClimateDataHistorical2,
+                        type: "violin",
+                        violinmode: "overlay",
+                        box: {
+                          visible: true,
+                        },
+                        hoverinfo: "x",
+                        // visible: "legendonly",
+                        boxpoints: true,
+                        name: props.ctyName + "<br>" + " Historical",
+                        marker: {
+                          color: "rgb(7,40,89)",
+                        },
+                        boxpoints: "Outliers",
+                        line: {
+                          color: "red",
+                        },
+                        opacity: 0.6,
+                        meanline: {
+                          visible: true,
+                        },
+                        x0: "OEE",
                       },
-                      opacity: 0.6,
-                      meanline: {
-                        visible: true,
+
+                      {
+                        // Analog analogClimateDataHistorical2 - Historical
+                        x: analogClimateDataHistorical2,
+                        type: "violin",
+                        violinmode: "overlay",
+                        box: {
+                          visible: true,
+                        },
+                        hoverinfo: "x",
+                        // visible: "legendonly",
+                        boxpoints: true,
+                        name: props.closestAnalog + "<br>" + " Historical",
+                        marker: {
+                          color: "rgb(7,40,89)",
+                        },
+                        boxpoints: "Outliers",
+                        line: {
+                          color: "green",
+                        },
+                        opacity: 0.6,
+                        meanline: {
+                          visible: true,
+                        },
+                        x0: "OEE",
                       },
-                      x0: "OEE",
-                    },
-                    {
-                      // Self cntyClimateDataRCP45 - Mid-century
-                      x: cntyClimateDataRCP45,
-                      type: "violin",
-                      violinmode: "overlay",
-                      box: {
-                        visible: true,
+                      {
+                        // Self cntyClimateDataRCP45 - Mid-century
+                        x: cntyClimateDataRCP852,
+                        type: "violin",
+                        violinmode: "overlay",
+                        box: {
+                          visible: true,
+                        },
+                        hoverinfo: "x",
+                        // hoverlabel_align: "left",
+
+                        // visible: "legendonly",
+                        boxpoints: true,
+                        name: props.ctyName + "<br>" + " Mid-Century",
+                        marker: {
+                          color: "rgb(7,40,89)",
+                        },
+                        boxpoints: "Outliers",
+                        line: {
+                          color: "red",
+                        },
+                        opacity: 0.6,
+                        meanline: {
+                          visible: true,
+                        },
+                        x0: "OEE",
                       },
-                      hoverinfo: "x",
-                      // visible: "legendonly",
-                      boxpoints: true,
-                      name: props.ctyName + " Mid-Century",
-                      marker: {
-                        color: "rgb(7,40,89)",
+                    ]}
+                    layout={{
+                      width: 550,
+                      height: 380,
+                      traceorder: "reversed",
+                      legend: {
+                        // bgcolor: "magenta",
+                        x: -0.4,
+                        y: 1.5,
                       },
-                      boxpoints: "Outliers",
-                      line: {
-                        color: "red",
-                      },
-                      opacity: 0.6,
-                      meanline: {
-                        visible: true,
-                      },
-                      x0: "OEE",
-                    },
-                    // {
-                    //   y: cntyClimateDataRCP85,
-                    //   type: "box",
-                    //   name: props.ctyName + " RCP85",
-                    //   marker: {
-                    //     color: "rgb(124,12,100)",
-                    //   },
-                    //   boxpoints: "Outliers",
-                    // },
-                    // {
-                    //   y: analogClimateDataRCP85,
-                    //   type: "box",
-                    //   name: props.closestAnalog + " RCP85",
-                    //   marker: {
-                    //     color: "rgb(214,12,140)",
-                    //   },
-                    //   boxpoints: "Outliers",
-                    // },
-                  ]}
-                  layout={{
-                    width: 850,
-                    height: 480,
-                    title: "Box Plot",
-                  }}
-                />
-              </Box>
-              {/* <Box h="400px">
-                <Plot
-                  data={[
-                    {
-                      x: cntyClimateDataYearHistorical,
-                      y: cntyClimateDataHistorical,
-                      fill: "tozeroy",
-                      type: "scatter",
-                      mode: "none",
-                      name: props.ctyName + " Historical",
-                    },
-                    {
-                      x: cntyClimateDataYearRCP45,
-                      y: cntyClimateDataRCP45,
-                      fill: "tozeroy",
-                      type: "scatter",
-                      name: props.ctyName + " RCP45",
-                    },
-                    {
-                      fill: "tozeroy",
-                      type: "scatter",
-                      x: analogClimateDataYearRCP85,
-                      y: analogClimateDataRCP85,
-                      name: props.closestAnalog + " RCP85",
-                    },
-                  ]}
-                  layout={{
-                    width: 840,
-                    height: 400,
-                    title: " Area Plot",
-                  }}
-                />
-              </Box> */}
-              {/* <Box h="400px">
+                      points: "outliers",
+                      title: variable2,
+                      // orientation: "h",
+                      showlegend: false,
+                    }}
+                  />
+                </Box>
+                {/* <Box h="400px">
                 <Plot
                   data={[
                     {
@@ -568,6 +642,249 @@ export default function RightDrawer(props) {
                   }}
                 />
               </Box> */}
+              </Grid>
+              <Grid templateColumns="repeat(2, 1fr)" gap={6}>
+                <Box mt="-8" ml="-3" h="200px" w="210px">
+                  <Plot
+                    ml="3"
+                    data={[
+                      {
+                        // self HSD - Historical
+                        x: cntyClimateDataHistorical3,
+                        type: "violin",
+                        violinmode: "overlay",
+                        box: {
+                          visible: true,
+                        },
+                        hoverinfo: "x",
+                        // visible: "legendonly",
+                        boxpoints: true,
+                        name: props.ctyName + "<br>" + " Historical",
+                        marker: {
+                          color: "rgb(7,40,89)",
+                        },
+                        boxpoints: "Outliers",
+                        line: {
+                          color: "red",
+                        },
+                        opacity: 0.6,
+                        meanline: {
+                          visible: true,
+                        },
+                        x0: "OEE",
+                      },
+
+                      {
+                        // Analog analogClimateData - Historical
+                        x: analogClimateDataHistorical3,
+                        type: "violin",
+                        violinmode: "overlay",
+                        box: {
+                          visible: true,
+                        },
+                        hoverinfo: "x",
+                        // visible: "legendonly",
+                        boxpoints: true,
+                        name: props.closestAnalog + "<br>" + " Historical",
+                        marker: {
+                          color: "rgb(7,40,89)",
+                        },
+                        boxpoints: "Outliers",
+                        line: {
+                          color: "green",
+                        },
+                        opacity: 0.6,
+                        meanline: {
+                          visible: true,
+                        },
+                        x0: "OEE",
+                      },
+                      {
+                        // Self cntyClimateDataRCP85 - Mid-century
+                        x: cntyClimateDataRCP853,
+                        type: "violin",
+                        violinmode: "overlay",
+                        box: {
+                          visible: true,
+                        },
+                        hoverinfo: "x",
+                        // hoverlabel_align: "left",
+
+                        // visible: "legendonly",
+                        boxpoints: true,
+                        name: props.ctyName + "<br>" + " Mid-Century",
+                        marker: {
+                          color: "rgb(7,40,89)",
+                        },
+                        boxpoints: "Outliers",
+                        line: {
+                          color: "red",
+                        },
+                        opacity: 0.6,
+                        meanline: {
+                          visible: true,
+                        },
+                        x0: "OEE",
+                      },
+                    ]}
+                    layout={{
+                      width: 550,
+                      height: 380,
+                      traceorder: "reversed",
+                      legend: {
+                        // bgcolor: "magenta",
+                        x: -0.4,
+                        y: 1.5,
+                      },
+                      points: "outliers",
+                      title: variable3,
+                      // orientation: "h",
+                      showlegend: false,
+                    }}
+                  />
+                </Box>
+                <Box mt="-8" ml="20" h="200px" w="210px">
+                  <Plot
+                    data={[
+                      {
+                        // self HSD - Historical
+                        x: cntyClimateDataHistorical4,
+                        type: "violin",
+                        violinmode: "overlay",
+                        box: {
+                          visible: true,
+                        },
+                        hoverinfo: "x",
+                        // visible: "legendonly",
+                        boxpoints: true,
+                        name: props.ctyName + "<br>" + " Historical",
+                        marker: {
+                          color: "rgb(7,40,89)",
+                        },
+                        boxpoints: "Outliers",
+                        line: {
+                          color: "red",
+                        },
+                        opacity: 0.6,
+                        meanline: {
+                          visible: true,
+                        },
+                        x0: "OEE",
+                      },
+
+                      {
+                        // Analog analogClimateDataHistorical2 - Historical
+                        x: analogClimateDataHistorical4,
+                        type: "violin",
+                        violinmode: "overlay",
+                        box: {
+                          visible: true,
+                        },
+                        hoverinfo: "x",
+                        // visible: "legendonly",
+                        boxpoints: true,
+                        name: props.closestAnalog + "<br>" + " Historical",
+                        marker: {
+                          color: "rgb(7,40,89)",
+                        },
+                        boxpoints: "Outliers",
+                        line: {
+                          color: "green",
+                        },
+                        opacity: 0.6,
+                        meanline: {
+                          visible: true,
+                        },
+                        x0: "OEE",
+                      },
+                      {
+                        // Self cntyClimateDataRCP45 - Mid-century
+                        x: cntyClimateDataRCP854,
+                        type: "violin",
+                        violinmode: "overlay",
+                        box: {
+                          visible: true,
+                        },
+                        hoverinfo: "x",
+                        // hoverlabel_align: "left",
+
+                        // visible: "legendonly",
+                        boxpoints: true,
+                        name: props.ctyName + "<br>" + " Mid-Century",
+                        marker: {
+                          color: "rgb(7,40,89)",
+                        },
+                        boxpoints: "Outliers",
+                        line: {
+                          color: "red",
+                        },
+                        opacity: 0.6,
+                        meanline: {
+                          visible: true,
+                        },
+                        x0: "OEE",
+                      },
+                    ]}
+                    layout={{
+                      width: 550,
+                      height: 380,
+                      traceorder: "reversed",
+                      legend: {
+                        // bgcolor: "magenta",
+                        x: -0.4,
+                        y: 1.5,
+                      },
+                      points: "outliers",
+                      title: variable4,
+                      // orientation: "h",
+                      showlegend: false,
+                    }}
+                  />
+                </Box>
+                {/* <Box h="400px">
+                <Plot
+                  data={[
+                    {
+                      x: (cntyPressureJJAHistorical, "total_bill"),
+                      // y: cntyTempJJAHistorical,
+                      type: "violin",
+                      box: {
+                        visible: true,
+                      },
+                      boxpoints: false,
+                      line: {
+                        color: "black",
+                      },
+                      fillcolor: "#8dd3c7",
+                      opacity: 0.6,
+                      meanline: {
+                        visible: true,
+                      },
+                      y0: "Total Bill",
+                      xaxis: {
+                        zeroline: false,
+                      },
+                    },
+                    //   mode: "markers",
+                    //   marker: { color: "red" },
+                    //   name: "Pressure vs Temprature1",
+                    // },
+                    // {
+                    //   type: "histogram2dcontour",
+                    //   marker: { color: "teal" },
+                    //   x: cntyPressureJJAHistorical,
+                    //   y: cntyTempJJAHistorical,
+                    //   name: "Pressure vs Temprature",
+                    // },
+                  ]}
+                  layout={{
+                    width: 700,
+                    height: 400,
+                    title: "2D Density Plot (Pressure vs Temprature)",
+                  }}
+                />
+              </Box> */}
+              </Grid>
             </VStack>
           </DrawerBody>
         </DrawerContent>
