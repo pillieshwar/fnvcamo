@@ -20,6 +20,13 @@ import { Grid, GridItem } from "@chakra-ui/react";
 export default function RightDrawer(props) {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [model, setModel] = React.useState(props.model);
+  const [emissions, setEmissions] = React.useState("rcp45");
+  const [emissionsKey, setEmissionsKey] = React.useState("RCP 4.5");
+  // const [timeframe, setTimeframe] = React.useState("Tmin_JJA");
+  // const [timeframeKey, setTimeframeKey] = React.useState("Tmin_JJA");
+  const [year1, setYear1] = React.useState("2020");
+  const [year2, setYear2] = React.useState("2050");
+
   const [variable, setVariable] = React.useState("Tmin_JJA");
   const [variable2, setVariable2] = React.useState("Tmax_JJA");
   const [variable3, setVariable3] = React.useState("HSD_95_JJA");
@@ -126,18 +133,18 @@ export default function RightDrawer(props) {
   const modelNames = [
     "BNU-ESM",
     "CanESM2",
-    "CNRM-CMS",
+    "CNRM-CM5",
     "CSIRO-Mk3-6-0",
     "GFDL-ESM2G",
     "GFDL-ESM2M",
     "HadGEM2-CC365",
-    "HadGEM2-ES365",
-    "IPSL-CSMA-LR",
-    "IPSL-CSMA-MR",
-    "ISPL-CMSB-LR",
+    // "HadGEM2-ES365",
+    "IPSL-CM5A-LR",
+    "IPSL-CM5A-MR",
+    "IPSL-CM5B-LR",
     "MIROC-ESM",
     "MIROC-ESM-CHEM",
-    "MIROCS",
+    // "MIROCS",
     "MRI-CGCM3",
     "NorESM1-M",
   ];
@@ -149,6 +156,20 @@ export default function RightDrawer(props) {
   function storeVariables(m) {
     setVariable(m);
   }
+  function storeVariablesTimeframe(m, k) {
+    m = m.split(",");
+    console.log(m[1]);
+    setYear1(m[0]);
+    setYear2(m[1]);
+
+    // setTimeframeKey(k);
+  }
+
+  function storeVariablesEmissions(m, k) {
+    setEmissions(m);
+    setEmissionsKey(k);
+  }
+
   function storeVariables2(m) {
     setVariable2(m);
   }
@@ -175,8 +196,8 @@ export default function RightDrawer(props) {
     // County Historical
     if (
       climateData.Location === countyName &&
-      climateData.year >= "1990" &&
-      climateData.year <= "2020" &&
+      climateData.year >= 1990 &&
+      climateData.year <= 2020 &&
       climateData.Scenario === "historical" &&
       climateData.Model === model
     ) {
@@ -189,23 +210,23 @@ export default function RightDrawer(props) {
       cntyPressureJJAHistorical.push(climateData.Pr_JJA);
       cntyTempJJAHistorical.push(climateData.Tmax_JJA);
     }
-    // County RCP45
-    if (
-      climateData.Location === countyName &&
-      climateData.year >= "2000" &&
-      climateData.year <= "2050" &&
-      climateData.Scenario === "rcp45" &&
-      climateData.Model === model
-    ) {
-      cntyClimateDataRCP45.push(climateData[variable]);
-      cntyClimateDataYearRCP45.push(climateData.year);
-    }
+    // // County RCP45
+    // if (
+    //   climateData.Location === countyName &&
+    //   climateData.year >= "2000" &&
+    //   climateData.year <= "2050" &&
+    //   climateData.Scenario === "rcp45" &&
+    //   climateData.Model === model
+    // ) {
+    //   cntyClimateDataRCP45.push(climateData[variable]);
+    //   cntyClimateDataYearRCP45.push(climateData.year);
+    // }
     // County RCP85
     if (
       climateData.Location === countyName &&
-      climateData.year >= "2040" &&
-      climateData.year <= "2070" &&
-      climateData.Scenario === "rcp85" &&
+      climateData.year >= year1 &&
+      climateData.year <= year2 &&
+      climateData.Scenario === emissions &&
       climateData.Model === model
     ) {
       cntyClimateDataRCP85.push(climateData[variable]);
@@ -230,24 +251,24 @@ export default function RightDrawer(props) {
       analogClimateDataYearHistorical.push(climateData.year);
     }
 
-    // Analog RCP45
-    if (
-      climateData.Location === analogName &&
-      climateData.year >= "2020" &&
-      climateData.year <= "2050" &&
-      climateData.Scenario === "rcp45" &&
-      climateData.Model === model
-    ) {
-      analogClimateDataRCP45.push(climateData[variable]);
-      analogClimateDataYearRCP45.push(climateData.year);
-    }
+    // // Analog RCP45
+    // if (
+    //   climateData.Location === analogName &&
+    //   climateData.year >= "2020" &&
+    //   climateData.year <= "2050" &&
+    //   climateData.Scenario === "rcp45" &&
+    //   climateData.Model === model
+    // ) {
+    //   analogClimateDataRCP45.push(climateData[variable]);
+    //   analogClimateDataYearRCP45.push(climateData.year);
+    // }
 
     // Analog RCP85
     if (
       climateData.Location === analogName &&
       climateData.year >= "2040" &&
       climateData.year <= "2070" &&
-      climateData.Scenario === "rcp85" &&
+      climateData.Scenario === emissions &&
       climateData.Model === model
     ) {
       analogClimateDataRCP85.push(climateData[variable]);
@@ -277,7 +298,7 @@ export default function RightDrawer(props) {
               model +
               " model)"}
 
-            <Grid templateColumns="repeat(7, 1fr)" gap={2}>
+            <Grid templateColumns="repeat(3, 1fr)" gap={2}>
               <Box w="100%" h="10">
                 <Select
                   align="center"
@@ -295,21 +316,23 @@ export default function RightDrawer(props) {
                   ))}
                 </Select>
               </Box>
+
               <Box w="100%" h="10">
                 <Select
                   align="center"
                   size="sm"
                   p={0}
-                  placeholder={variable}
+                  placeholder={emissionsKey}
                   onClick={(e) => {
-                    storeVariables(e.target.value);
+                    storeVariablesEmissions(e.target.value, e.target.key);
                   }}
                 >
-                  {dataVariables.map((indvVariables, index) => (
-                    <option key={indvVariables} value={indvVariables}>
-                      {indvVariables}
-                    </option>
-                  ))}
+                  <option key="RCP 4.5" value="rcp45">
+                    RCP 4.5
+                  </option>
+                  <option key="rcp85" value="rcp85">
+                    RCP 8.5
+                  </option>
                 </Select>
               </Box>
               <Box w="100%" h="10">
@@ -317,92 +340,59 @@ export default function RightDrawer(props) {
                   align="center"
                   size="sm"
                   p={0}
-                  placeholder={variable}
+                  placeholder="TimeFrame"
                   onClick={(e) => {
-                    storeVariables2(e.target.value);
+                    storeVariablesTimeframe(e.target.value, e.target.key);
                   }}
                 >
-                  {dataVariables.map((indvVariables, index) => (
-                    <option key={indvVariables} value={indvVariables}>
-                      {indvVariables}
-                    </option>
-                  ))}
-                </Select>
-              </Box>
-              <Box w="100%" h="10">
-                <Select
-                  align="center"
-                  size="sm"
-                  p={0}
-                  placeholder={variable}
-                  onClick={(e) => {
-                    storeVariables3(e.target.value);
-                  }}
-                >
-                  {dataVariables.map((indvVariables, index) => (
-                    <option key={indvVariables} value={indvVariables}>
-                      {indvVariables}
-                    </option>
-                  ))}
-                </Select>
-              </Box>
-              <Box w="100%" h="10">
-                <Select
-                  align="center"
-                  size="sm"
-                  p={0}
-                  placeholder={variable}
-                  onClick={(e) => {
-                    storeVariables4(e.target.value);
-                  }}
-                >
-                  {dataVariables.map((indvVariables, index) => (
-                    <option key={indvVariables} value={indvVariables}>
-                      {indvVariables}
-                    </option>
-                  ))}
-                </Select>
-              </Box>
-              <Box w="100%" h="10">
-                <Select
-                  align="center"
-                  size="sm"
-                  p={0}
-                  placeholder={variable}
-                  onClick={(e) => {
-                    storeVariables(e.target.value);
-                  }}
-                >
-                  {dataVariables.map((indvVariables, index) => (
-                    <option key={indvVariables} value={indvVariables}>
-                      {indvVariables}
-                    </option>
-                  ))}
-                </Select>
-              </Box>
-              <Box w="100%" h="10">
-                <Select
-                  align="center"
-                  size="sm"
-                  p={0}
-                  placeholder={variable}
-                  onClick={(e) => {
-                    storeVariables(e.target.value);
-                  }}
-                >
-                  {dataVariables.map((indvVariables, index) => (
-                    <option key={indvVariables} value={indvVariables}>
-                      {indvVariables}
-                    </option>
-                  ))}
+                  <option key="2020 - 2050" value="2020,2050">
+                    2020 - 2050
+                  </option>
+                  <option key="2040 - 2070" value="2040,2070">
+                    2040 - 2070
+                  </option>
                 </Select>
               </Box>
             </Grid>
           </DrawerHeader>
-          <DrawerBody>
+          <DrawerBody bgColor="gray.200">
             <VStack spacing={200} align="stretch">
               <Grid templateColumns="repeat(2, 1fr)" gap={6}>
-                <Box mt="-8" ml="-3" h="200px" w="210px">
+                <Box mt="-7" ml="-2" h="200px" w="210px">
+                  <Select
+                    align="center"
+                    size="sm"
+                    top="8"
+                    zIndex="100"
+                    p={0}
+                    placeholder={variable}
+                    onClick={(e) => {
+                      storeVariables(e.target.value);
+                    }}
+                  >
+                    {dataVariables.map((indvVariables, index) => (
+                      <option key={indvVariables} value={indvVariables}>
+                        {indvVariables}
+                      </option>
+                    ))}
+                  </Select>
+                  {/* <Select
+                    align="center"
+                    size="sm"
+                    top="8"
+                    zIndex="100"
+                    p={0}
+                    placeholder={variable}
+                    onClick={(e) => {
+                      storeVariablesTimeframe(e.target.value);
+                    }}
+                  >
+                    {dataVariables.map((indvVariables, index) => (
+                      <option key={indvVariables} value={indvVariables}>
+                        {indvVariables}
+                      </option>
+                    ))}
+                  </Select> */}
                   <Plot
                     ml="3"
                     data={[
@@ -501,7 +491,24 @@ export default function RightDrawer(props) {
                     }}
                   />
                 </Box>
-                <Box mt="-8" ml="20" h="200px" w="210px">
+                <Box mt="-7" ml="130px" h="200px" w="210px">
+                  <Select
+                    align="center"
+                    size="sm"
+                    top="8"
+                    zIndex="100"
+                    p={0}
+                    placeholder={variable2}
+                    onClick={(e) => {
+                      storeVariables2(e.target.value);
+                    }}
+                  >
+                    {dataVariables.map((indvVariables, index) => (
+                      <option key={indvVariables} value={indvVariables}>
+                        {indvVariables}
+                      </option>
+                    ))}
+                  </Select>
                   <Plot
                     data={[
                       {
@@ -587,6 +594,8 @@ export default function RightDrawer(props) {
                       width: 550,
                       height: 380,
                       traceorder: "reversed",
+
+                      // plot_bgcolor: "",
                       legend: {
                         // bgcolor: "magenta",
                         x: -0.4,
@@ -599,52 +608,27 @@ export default function RightDrawer(props) {
                     }}
                   />
                 </Box>
-                {/* <Box h="400px">
-                <Plot
-                  data={[
-                    {
-                      x: (cntyPressureJJAHistorical, "total_bill"),
-                      // y: cntyTempJJAHistorical,
-                      type: "violin",
-                      box: {
-                        visible: true,
-                      },
-                      boxpoints: false,
-                      line: {
-                        color: "black",
-                      },
-                      fillcolor: "#8dd3c7",
-                      opacity: 0.6,
-                      meanline: {
-                        visible: true,
-                      },
-                      y0: "Total Bill",
-                      xaxis: {
-                        zeroline: false,
-                      },
-                    },
-                    //   mode: "markers",
-                    //   marker: { color: "red" },
-                    //   name: "Pressure vs Temprature1",
-                    // },
-                    // {
-                    //   type: "histogram2dcontour",
-                    //   marker: { color: "teal" },
-                    //   x: cntyPressureJJAHistorical,
-                    //   y: cntyTempJJAHistorical,
-                    //   name: "Pressure vs Temprature",
-                    // },
-                  ]}
-                  layout={{
-                    width: 700,
-                    height: 400,
-                    title: "2D Density Plot (Pressure vs Temprature)",
-                  }}
-                />
-              </Box> */}
               </Grid>
+
               <Grid templateColumns="repeat(2, 1fr)" gap={6}>
-                <Box mt="-8" ml="-3" h="200px" w="210px">
+                <Box ml="-2" h="200px" w="210px">
+                  <Select
+                    align="center"
+                    size="sm"
+                    top="8"
+                    zIndex="100"
+                    p={0}
+                    placeholder={variable3}
+                    onClick={(e) => {
+                      storeVariables3(e.target.value);
+                    }}
+                  >
+                    {dataVariables.map((indvVariables, index) => (
+                      <option key={indvVariables} value={indvVariables}>
+                        {indvVariables}
+                      </option>
+                    ))}
+                  </Select>
                   <Plot
                     ml="3"
                     data={[
@@ -743,7 +727,24 @@ export default function RightDrawer(props) {
                     }}
                   />
                 </Box>
-                <Box mt="-8" ml="20" h="200px" w="210px">
+                <Box ml="130px" h="200px" w="210px">
+                  <Select
+                    align="center"
+                    size="sm"
+                    top="8"
+                    zIndex="100"
+                    p={0}
+                    placeholder={variable4}
+                    onClick={(e) => {
+                      storeVariables4(e.target.value);
+                    }}
+                  >
+                    {dataVariables.map((indvVariables, index) => (
+                      <option key={indvVariables} value={indvVariables}>
+                        {indvVariables}
+                      </option>
+                    ))}
+                  </Select>
                   <Plot
                     data={[
                       {

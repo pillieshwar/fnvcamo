@@ -541,17 +541,19 @@ export default function Navigate() {
 
             <UnorderedList align="left" p="5%" minH="7vH">
               <ListItem mt="2%">
-                Lorem ipsum dolor sit amet Consectetur adipiscing elit Integer
-                molestie lorem at massa Facilisis in pretium nisl aliquet
+                Analogs have been calculated for 2664 counties in the US (2
+                RCPs, 16 models, two frames (2020 –2050; 2040 –2070)​
               </ListItem>
 
               <ListItem mt="2%">
-                Lorem ipsum dolor sit amet Consectetur adipiscing elit Integer
-                molestie lorem at massa Facilisis in pretium nisl aliquet
+                Analogs are complex from the perspective of looking for
+                management insights. If it hard to find one location that fits
+                all criteria.
               </ListItem>
               <ListItem mt="2%">
-                Lorem ipsum dolor sit amet Consectetur adipiscing elit Integer
-                molestie lorem at massa Facilisis in pretium nisl aliquet
+                Lot of important information is lost by focusing on
+                averages,because the distribution around the average could be
+                key.
               </ListItem>
               <ListItem mt="2%">
                 Lorem ipsum dolor sit amet Consectetur adipiscing elit Integer
