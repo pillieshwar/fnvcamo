@@ -33,12 +33,23 @@ import Maps from "./body/map";
 import US_Counties from "./body/counties.json";
 import RightDrawer from "./drawer";
 // import _map from "lodash/map";
+import {
+  Modal,
+  ModalOverlay,
+  ModalContent,
+  ModalHeader,
+  ModalFooter,
+  ModalBody,
+  ModalCloseButton,
+} from "@chakra-ui/react";
+import { useDisclosure } from "@chakra-ui/react";
+import { Button } from "@chakra-ui/react";
 
 export default function Navigate() {
   // const { colorMode, toggleColorMode } = useColorMode();
   const changeToWhiteheader = useColorModeValue("#1A202C", "white");
   const changeToBlack = useColorModeValue("#CBD5E0", "#1A202C");
-  const whiteColor = useColorModeValue("#CBD5E0", "#1A202C");
+  // const whiteColor = useColorModeValue("#CBD5E0", "#1A202C");
   const blackColor = useColorModeValue("#1A202C", "#CBD5E0");
 
   const [ctyName, setCtyName] = React.useState("WALLA WALLA");
@@ -219,15 +230,41 @@ export default function Navigate() {
   function storeModel(m) {
     setModel(m);
   }
+
+  const { isOpen, onOpen, onClose } = useDisclosure();
+
   return (
     <Flex flexDir="column" h="100vh">
+      {/* <Button mt={4} onClick={onOpen}>
+        Open Modal
+      </Button>
+      <Modal onClose={onClose} size={"xl"} isOpen={isOpen}>
+        <ModalOverlay />
+        <ModalContent>
+          <ModalHeader>Modal Title</ModalHeader>
+          <ModalCloseButton />
+          <ModalBody>aDF</ModalBody>
+          <ModalFooter>
+            <Button onClick={onClose}>Close</Button>
+          </ModalFooter>
+        </ModalContent>
+      </Modal> */}
+
       {/* -----------------------header -----------------------*/}
       <Flex
         flexDir="column"
-        bg={changeToWhiteheader}
-        color={whiteColor}
-        h="7vh"
-        // backgroundColor="black"
+        // bg={changeToWhiteheader}
+        // color={whiteColor}
+        color="white"
+        // bgGradient={[
+        //   "linear(to-tr, teal.300, yellow.400)",
+        //   "linear(to-t, blue.200, teal.500)",
+        //   "linear(to-b, orange.100, purple.300)",
+        // ]}
+        // bgGradient="linear(red.100 0%, orange.100 25%, yellow.100 50%)"
+        h="6vh"
+        // bgGradient="linear(to-l, #7928CA, #FF0080)"
+        backgroundColor="black"
       >
         <Header />
       </Flex>
@@ -459,7 +496,14 @@ export default function Navigate() {
         >
           <Flex w="100%" p="1%" flexDir="column" overflow="auto" minH="7vH">
             <Box bg="teal" w="100%" p={2} fontSize="2xl" color="white">
-              F&V CAMO
+              <Text
+                // bgGradient="linear(to-l, #7928CA, #FF0080)"
+                bgClip="text"
+                fontSize="2xl"
+                color="white"
+              >
+                F&V CAMO
+              </Text>
             </Box>
             <Grid templateColumns="repeat(1, 1fr)" mt={1} gap={2}>
               <Box w="100%" h="10">

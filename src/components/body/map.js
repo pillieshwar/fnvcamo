@@ -8,9 +8,12 @@ import React, {
 } from "react";
 import {
   MapContainer,
+  LayersControl,
+  LayerGroup,
+  FeatureGroup,
   Marker,
-  // Circle,
-  // Popup,
+  Circle,
+  Popup,
   TileLayer,
   GeoJSON,
   // Tooltip,
@@ -21,6 +24,7 @@ import {
 } from "react-leaflet";
 import US_Counties from "./counties.json";
 import US_all_counties from "./otherCounties.json";
+// import US_all_counties from "./us-county-boundaries.geojson";
 
 const innerBounds = [
   [49.505, -2.09],
@@ -147,6 +151,11 @@ export default function MainMap(props) {
     temp2 = multiPolygonAnalog[i][1];
     analogGreeCoordinates.push([temp2, temp1]);
   }
+  const center = [51.505, -0.09];
+  const rectangle = [
+    [51.49, -0.08],
+    [51.5, -0.06],
+  ];
 
   return (
     <div id="map">
@@ -156,11 +165,115 @@ export default function MainMap(props) {
         center={position}
         zoom={5}
       >
+        <LayersControl position="topright">
+          <LayersControl.BaseLayer checked name="OpenStreetMap.Mapnik">
+            <TileLayer
+              attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+              url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+            />
+          </LayersControl.BaseLayer>
+          {/* <LayersControl.BaseLayer name="OpenStreetMap.BlackAndWhite">
+            <TileLayer
+              attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+              url="https://tiles.wmflabs.org/bw-mapnik/{z}/{x}/{y}.png"
+            />
+          </LayersControl.BaseLayer> */}
+
+          <LayersControl.Overlay checked name="32 Counties">
+            <LayerGroup>
+              <GeoJSON
+                data={counties.features}
+                onEachFeature={onEachFeature}
+                pathOptions={blueOptions}
+              ></GeoJSON>
+            </LayerGroup>
+          </LayersControl.Overlay>
+
+          <LayersControl.Overlay name="All US Counties">
+            <LayerGroup>
+              <GeoJSON
+                data={US_all_counties.features}
+                weight={0.5}
+                pathOptions={greyOptions}
+              ></GeoJSON>
+            </LayerGroup>
+          </LayersControl.Overlay>
+
+          {/* <LayersControl.Overlay name="Feature group">
+            <Polyline
+              pathOptions={redOptions}
+              positions={[
+                [props.sendLat, props.sendLong],
+                [props.sendAnalogLat, props.sendAnalogLong],
+              ]}
+            />
+            <SetViewOnClick animateRef={animateRef} />
+            <Polygon
+              pathOptions={{ color: "red" }}
+              positions={animals}
+            ></Polygon>
+            <Polygon
+              pathOptions={{ color: "green" }}
+              positions={analogGreeCoordinates}
+            ></Polygon>
+            <Polyline
+              pathOptions={redOptions}
+              positions={[
+                [props.sendLat, props.sendLong],
+                [props.sendAnalogLat, props.sendAnalogLong],
+              ]}
+            />
+            <SetViewOnClick animateRef={animateRef} />
+            <Polygon
+              pathOptions={{ color: "red" }}
+              positions={animals}
+            ></Polygon>
+            <Polygon
+              pathOptions={{ color: "green" }}
+              positions={analogGreeCoordinates}
+            ></Polygon>
+          </LayersControl.Overlay> */}
+        </LayersControl>
+        <Polyline
+          pathOptions={redOptions}
+          positions={[
+            [props.sendLat, props.sendLong],
+            [props.sendAnalogLat, props.sendAnalogLong],
+          ]}
+        />
+        <SetViewOnClick animateRef={animateRef} />
+        <Polygon pathOptions={{ color: "red" }} positions={animals}></Polygon>
+        <Polygon
+          pathOptions={{ color: "green" }}
+          positions={analogGreeCoordinates}
+        ></Polygon>
+        <Polyline
+          pathOptions={redOptions}
+          positions={[
+            [props.sendLat, props.sendLong],
+            [props.sendAnalogLat, props.sendAnalogLong],
+          ]}
+        />
+        <SetViewOnClick animateRef={animateRef} />
+        <Polygon pathOptions={{ color: "red" }} positions={animals}></Polygon>
+        <Polygon
+          pathOptions={{ color: "green" }}
+          positions={analogGreeCoordinates}
+        ></Polygon>
+      </MapContainer>
+
+      {/* <MapContainer
+        bounds={outerBounds}
+        style={{ height: "60vh" }}
+        center={position}
+        zoom={5}
+      >
         <TileLayer
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+          // url=""
+          // url="http://1.base.maps.cit.api.here.com/maptile/2.1/maptile/newest/normal.day/{z}/{x}/{y}/256/png8?app_id=OO3n6HayrdDH6DhkxRgG&app_code=MZQ6Zn6zc1s5Psz92GMMxw"
           attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
         />
-        {/* <SetBoundsRectangles /> */}
 
         <GeoJSON
           data={US_all_counties.features}
@@ -181,14 +294,14 @@ export default function MainMap(props) {
             [props.sendAnalogLat, props.sendAnalogLong],
           ]}
         />
-        {/* <Marker position={[43.893415, -88.46757]}></Marker> */}
         <SetViewOnClick animateRef={animateRef} />
         <Polygon pathOptions={{ color: "red" }} positions={animals}></Polygon>
         <Polygon
           pathOptions={{ color: "green" }}
           positions={analogGreeCoordinates}
         ></Polygon>
-      </MapContainer>
+      </MapContainer>{" "}
+      */}
     </div>
   );
 }

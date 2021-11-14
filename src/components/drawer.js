@@ -16,6 +16,8 @@ import { VStack } from "@chakra-ui/react";
 import Climate_Data from "./body/Climate_Data_All_Variables.json";
 import { Select } from "@chakra-ui/react";
 import { Grid, GridItem } from "@chakra-ui/react";
+// import { Icon, CloseIcon } from "@chakra-ui/react";
+import { CloseIcon } from "@chakra-ui/icons";
 
 export default function RightDrawer(props) {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -275,7 +277,7 @@ export default function RightDrawer(props) {
       analogClimateDataYearRCP85.push(climateData.year);
     }
   });
-  // console.log(cntyTempJJAHistorical);
+
   return (
     <Box w="100%" h="10">
       <Button
@@ -284,21 +286,29 @@ export default function RightDrawer(props) {
         variant="outline"
         onClick={onOpen}
         fontSize="sm"
+        _hover={{
+          bgGradient: "linear(to-r, black.500, gray.500)",
+        }}
       >
         VIEW CHARTS
       </Button>
-      <Drawer size={"xl"} placement="right" onClose={onClose} isOpen={isOpen}>
+      <Drawer size={"full"} placement="right" onClose={onClose} isOpen={isOpen}>
         <DrawerOverlay />
         <DrawerContent>
-          <DrawerHeader color="teal" borderBottomWidth="1px">
-            {props.ctyName +
-              " vs " +
-              props.closestAnalog +
-              " (" +
-              model +
-              " model)"}
-
-            <Grid templateColumns="repeat(3, 1fr)" gap={2}>
+          <DrawerHeader
+            // bgGradient="linear(to-l, #7928CA, #FF0080)"
+            color="teal"
+            borderBottomWidth="1px"
+          >
+            <Grid templateColumns="repeat(7, 1fr)" gap={2}>
+              <GridItem colSpan={3}>
+                {props.ctyName +
+                  " vs " +
+                  props.closestAnalog +
+                  " (" +
+                  model +
+                  " model)"}
+              </GridItem>
               <Box w="100%" h="10">
                 <Select
                   align="center"
@@ -340,7 +350,7 @@ export default function RightDrawer(props) {
                   align="center"
                   size="sm"
                   p={0}
-                  placeholder="TimeFrame"
+                  placeholder="TIMEFRAME"
                   onClick={(e) => {
                     storeVariablesTimeframe(e.target.value, e.target.key);
                   }}
@@ -353,16 +363,30 @@ export default function RightDrawer(props) {
                   </option>
                 </Select>
               </Box>
+              <Box w="100%" h="10" onClick={onClose}>
+                <Button float="right">
+                  <CloseIcon w={6} h={7} color="red.500" />
+                </Button>
+              </Box>
             </Grid>
           </DrawerHeader>
-          <DrawerBody bgColor="gray.200">
-            <VStack spacing={200} align="stretch">
-              <Grid templateColumns="repeat(2, 1fr)" gap={6}>
-                <Box mt="-7" ml="-2" h="200px" w="210px">
+          {/* <DrawerBody bgColor="gray.200"> */}
+          <DrawerBody>
+            <VStack spacing={7} align="stretch">
+              <Grid ml="7" templateColumns="repeat(2, 1fr)" gap={1}>
+                <Box
+                  // display="flex"
+                  overflow="auto"
+                  mt="2"
+                  ml=""
+                  h="390px"
+                  w="92%"
+                  backgroundColor="white"
+                >
                   <Select
-                    align="center"
+                    float="center"
                     size="sm"
-                    top="8"
+                    width="30%"
                     zIndex="100"
                     p={0}
                     placeholder={variable}
@@ -376,23 +400,7 @@ export default function RightDrawer(props) {
                       </option>
                     ))}
                   </Select>
-                  {/* <Select
-                    align="center"
-                    size="sm"
-                    top="8"
-                    zIndex="100"
-                    p={0}
-                    placeholder={variable}
-                    onClick={(e) => {
-                      storeVariablesTimeframe(e.target.value);
-                    }}
-                  >
-                    {dataVariables.map((indvVariables, index) => (
-                      <option key={indvVariables} value={indvVariables}>
-                        {indvVariables}
-                      </option>
-                    ))}
-                  </Select> */}
+
                   <Plot
                     ml="3"
                     data={[
@@ -477,7 +485,7 @@ export default function RightDrawer(props) {
                     ]}
                     layout={{
                       width: 550,
-                      height: 380,
+                      height: 350,
                       traceorder: "reversed",
                       legend: {
                         // bgcolor: "magenta",
@@ -486,16 +494,24 @@ export default function RightDrawer(props) {
                       },
                       points: "outliers",
                       title: variable,
+                      legendgrouptitle_font_size: 10,
                       // orientation: "h",
                       showlegend: false,
                     }}
                   />
                 </Box>
-                <Box mt="-7" ml="130px" h="200px" w="210px">
+                <Box
+                  overflow="auto"
+                  mt="2"
+                  ml=""
+                  h="390px"
+                  w="92%"
+                  backgroundColor="white"
+                >
                   <Select
                     align="center"
                     size="sm"
-                    top="8"
+                    width="30%"
                     zIndex="100"
                     p={0}
                     placeholder={variable2}
@@ -592,7 +608,7 @@ export default function RightDrawer(props) {
                     ]}
                     layout={{
                       width: 550,
-                      height: 380,
+                      height: 350,
                       traceorder: "reversed",
 
                       // plot_bgcolor: "",
@@ -610,12 +626,19 @@ export default function RightDrawer(props) {
                 </Box>
               </Grid>
 
-              <Grid templateColumns="repeat(2, 1fr)" gap={6}>
-                <Box ml="-2" h="200px" w="210px">
+              <Grid templateColumns="repeat(2, 1fr)" gap={1}>
+                <Box
+                  overflow="auto"
+                  mt=""
+                  ml="7"
+                  h="390px"
+                  w="92%"
+                  backgroundColor="white"
+                >
                   <Select
                     align="center"
                     size="sm"
-                    top="8"
+                    width="30%"
                     zIndex="100"
                     p={0}
                     placeholder={variable3}
@@ -630,7 +653,6 @@ export default function RightDrawer(props) {
                     ))}
                   </Select>
                   <Plot
-                    ml="3"
                     data={[
                       {
                         // self HSD - Historical
@@ -713,7 +735,7 @@ export default function RightDrawer(props) {
                     ]}
                     layout={{
                       width: 550,
-                      height: 380,
+                      height: 350,
                       traceorder: "reversed",
                       legend: {
                         // bgcolor: "magenta",
@@ -727,11 +749,18 @@ export default function RightDrawer(props) {
                     }}
                   />
                 </Box>
-                <Box ml="130px" h="200px" w="210px">
+                <Box
+                  overflow="auto"
+                  mt=""
+                  ml="3"
+                  h="390px"
+                  w="92%"
+                  backgroundColor="white"
+                >
                   <Select
                     align="center"
                     size="sm"
-                    top="8"
+                    width="30%"
                     zIndex="100"
                     p={0}
                     placeholder={variable4}
@@ -828,7 +857,7 @@ export default function RightDrawer(props) {
                     ]}
                     layout={{
                       width: 550,
-                      height: 380,
+                      height: 350,
                       traceorder: "reversed",
                       legend: {
                         // bgcolor: "magenta",
